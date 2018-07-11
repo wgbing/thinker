@@ -1,4 +1,4 @@
-#ϵͳ����
+#系统设置
 system:
   version: 1.0
   description:
@@ -12,7 +12,19 @@ spring:
     name: eodic
   profiles:
     active: dev
-
+  # JPA
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        # 方言
+        dialect: org.hibernate.dialect.MySQL5Dialect
+        default_schema: dbo
+  # Freemarker
   freemarker:
     charset: utf-8
     cache: false
