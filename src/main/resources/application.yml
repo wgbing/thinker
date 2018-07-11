@@ -18,12 +18,9 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
-    properties:
-      hibernate:
-        # 方言
-        dialect: org.hibernate.dialect.MySQL5Dialect
-        default_schema: dbo
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect  #不加这句则默认为myisam引擎
   # Freemarker
   freemarker:
     charset: utf-8
