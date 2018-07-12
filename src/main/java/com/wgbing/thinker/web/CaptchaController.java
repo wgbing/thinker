@@ -42,7 +42,7 @@ public class CaptchaController {
             }
         });
         RandomWordFactory wf = new RandomWordFactory();
-//        wf.setCharacters("23456789abcdefghijkmnpqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ");\
+//        wf.setCharacters("23456789abcdefghijkmnpqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ");
         wf.setCharacters("0123456789");
         wf.setMaxLength(4);
         wf.setMinLength(4);

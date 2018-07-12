@@ -1,11 +1,23 @@
 package com.wgbing.thinker.config.security;
 
+import com.wgbing.thinker.utils.EncryptUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.session.SessionRegistry;
+import org.springframework.security.core.session.SessionRegistryImpl;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.authentication.session.ConcurrentSessionControlAuthenticationStrategy;
+import org.springframework.security.web.session.ConcurrentSessionFilter;
+import org.springframework.security.web.session.HttpSessionEventPublisher;
+import org.springframework.security.web.session.SessionInformationExpiredStrategy;
+import org.springframework.security.web.session.SimpleRedirectSessionInformationExpiredStrategy;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
@@ -17,6 +29,9 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)//开启security注解
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private UserDetailsService userDetailsService;
 
     /**
      * TODO: 定义系统安全策略，如哪些url路径需要经过授权才能访问，哪些不用
@@ -48,6 +63,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/auth")
+                .defaultSuccessUrl("/index")
                 .failureUrl("/login?error")
                 .and()
             .logout() //logout config
@@ -69,6 +85,75 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
                 .withUser("admin").password("123456").roles("USER");
-        super.configure(auth);
     }
+
+    @Override
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return new CustomUserDetailService();
+    }
+
+    @Bean
+    public CustomAuthenticationFilter customUsernamePasswordAuthenticationFilter()
+            throws Exception {
+        CustomAuthenticationFilter customUsernamePasswordAuthenticationFilter = new CustomAuthenticationFilter();
+        customUsernamePasswordAuthenticationFilter
+                .setAuthenticationManager(authenticationManagerBean());
+        customUsernamePasswordAuthenticationFilter
+                .setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher("/auth","POST"));
+        //session并发控制,因为默认的并发控制方法是空方法.这里必须自己配置一个
+//       customUsernamePasswordAuthenticationFilter.setSessionAuthenticationStrategy(new ConcurrentSessionControlAuthenticationStrategy(sessionRegistry()));
+        customUsernamePasswordAuthenticationFilter.setSessionAuthenticationStrategy(sessionAuthenticationStrategy());
+        return customUsernamePasswordAuthenticationFilter;
+    }
+
+    @Bean
+    SessionRegistry sessionRegistry() {
+        return new SessionRegistryImpl();
+    }
+
+    @Bean
+    public SessionInformationExpiredStrategy sessionInformationExpiredStrategy() {
+        return new SimpleRedirectSessionInformationExpiredStrategy("/login");
+    }
+
+    @Bean
+    public ConcurrentSessionControlAuthenticationStrategy sessionAuthenticationStrategy() {
+        ConcurrentSessionControlAuthenticationStrategy sessionStrategy =new  ConcurrentSessionControlAuthenticationStrategy(sessionRegistry());
+        sessionStrategy.setMaximumSessions(1);
+        sessionStrategy.setExceptionIfMaximumExceeded(false);
+        return sessionStrategy;
+    }
+
+    @Bean
+    public ConcurrentSessionFilter concurrencyFilter() {
+        ConcurrentSessionFilter concurrentSessionFilter = new ConcurrentSessionFilter(sessionRegistry(), sessionInformationExpiredStrategy());
+        return concurrentSessionFilter;
+    }
+
+    @Bean
+    public CustomSecurityFilter customSecurityFilter() throws Exception{
+        CustomSecurityFilter customSecurityFilter=new CustomSecurityFilter();
+        customSecurityFilter.setAuthenticationManager(authenticationManagerBean());
+        return customSecurityFilter;
+    }
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+
+    @Autowired
+    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(EncryptUtil.getPasswordEncoder());
+        auth.eraseCredentials(false);
+    }
+
+    @Bean
+    public HttpSessionEventPublisher httpSessionEventPublisher() {
+        return new HttpSessionEventPublisher();
+    }
+
+
 }

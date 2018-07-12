@@ -24,4 +24,9 @@ public class LoginController {
         return "/register";
     }
 
+    @GetMapping("/index")
+    public String index() {
+        return "/index";
+    }
+
 }
