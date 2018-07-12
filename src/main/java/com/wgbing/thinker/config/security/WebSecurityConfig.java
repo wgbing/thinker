@@ -18,6 +18,14 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableGlobalMethodSecurity(prePostEnabled = true)//开启security注解
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    /**
+     * TODO: 定义系统安全策略，如哪些url路径需要经过授权才能访问，哪些不用
+     * @author wgbing
+     * @date 2018/7/12 15:52
+     * @param http
+     * @return
+     * @throws
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.headers().frameOptions().disable();             //解决SpringBoot不允许加载iframe问题
@@ -34,6 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/plugins/**").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/register").permitAll()
+                .antMatchers("/captcha/image").permitAll()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
@@ -58,6 +67,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication()
+                .withUser("admin").password("123456").roles("USER");
         super.configure(auth);
     }
 }

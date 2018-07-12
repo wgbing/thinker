@@ -36,43 +36,62 @@
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
 
-    <form action="../../index2.html" method="post">
+    <form action="/auth" method="post">
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
+        <input id="username" name="username" type="text" class="form-control" placeholder="用户名" maxlength="20">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <input id="password" name="password" type="password" class="form-control" placeholder="密码" maxlength="20">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
+      <div class="form-group has-feedback" style="position: relative">
+          <input id="captcha" name="captcha" type="text" class="form-control" style="text-transform:uppercase;"
+                 for="btn_login" placeholder="验证码" maxlength="4" autocomplete="off">
+          <span class="glyphicon glyphicon-picture form-control-feedback"></span>
+          <img id="captchaImage" class="captchaImage" src="/captcha/image" style="width:80px; height:32px; position: absolute; top:1px; right:34px; cursor:pointer;"
+               onclick="this.src='/captcha/image?'+Math.random()" title="点击更换验证码"/>
+      </div>
       <div class="row">
-        <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox"> 记住我
-            </label>
+          <div class="col-xs-6">
+              <div class="checkbox icheck">
+                  <label>
+                      <input type="checkbox" name="rememberMe"> 记住用户
+                  </label>
+              </div>
           </div>
-        </div>
-        <!-- /.col -->
-        <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
-        </div>
-        <!-- /.col -->
+          <!-- /.col -->
+          <div class="col-xs-6">
+              <div class="checkbox pull-right">
+                  <a href="#">忘记密码</a>
+                  <span>&nbsp;/&nbsp;</span>
+                  <a href="/register" class="text-center">注册</a>
+              </div>
+          </div>
+          <!-- /.col -->
+      </div>
+      <div class="row">
+          <div class="col-xs-12">
+              <button type="submit" class="btn btn-danger btn-block btn-flat">登 录</button>
+          </div>
       </div>
     </form>
-
-    <div class="social-auth-links text-center">
-      <p>- OR -</p>
-      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
-        Facebook</a>
-      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
-        Google+</a>
+    <div class="social-auth-links" style="margin-bottom: 0px;">
+        <div class="row">
+            <div class="col-xs-5">
+                <div class="text-left" style="margin-top: 5px;">快速登录</div>
+            </div>
+            <div class="col-xs-7">
+                <div class="text-right">
+                    <a class="btn btn-social-icon btn-primary"><i class="fa fa-qq"></i></a>
+                    <a class="btn btn-social-icon btn-success"><i class="fa fa-wechat"></i></a>
+                    <a class="btn btn-social-icon btn-warning"><i class="fa fa-weibo"></i></a>
+                    <a class="btn btn-social-icon btn-info"><i class="fa fa-github"></i></a>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- /.social-auth-links -->
-
-    <a href="#">忘记密码</a><br>
-    <a href="/register" class="text-center">没有账号？点击注册</a>
-
   </div>
   <!-- /.login-box-body -->
 </div>
