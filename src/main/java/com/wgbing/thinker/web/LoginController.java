@@ -29,4 +29,9 @@ public class LoginController {
         return "/index";
     }
 
+    @GetMapping("/main")
+    public String welcome() {
+        return "/main";
+    }
+
 }
