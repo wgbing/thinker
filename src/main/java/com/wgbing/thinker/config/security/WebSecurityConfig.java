@@ -14,6 +14,8 @@ import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.session.ConcurrentSessionControlAuthenticationStrategy;
 import org.springframework.security.web.session.ConcurrentSessionFilter;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
@@ -61,6 +63,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/captcha/image").permitAll()
                 .anyRequest().authenticated()
                 .and()
+                .addFilterBefore(customUsernamePasswordAuthenticationFilter(),UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(customSecurityFilter(),FilterSecurityInterceptor.class)
+                .addFilterAt(concurrencyFilter(), ConcurrentSessionFilter.class)
+                .sessionManagement().sessionAuthenticationStrategy(sessionAuthenticationStrategy())
+                .and()
             .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/auth")
@@ -84,9 +91,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .passwordEncoder(new BCryptPasswordEncoder()).withUser("admin")
-                .password(new BCryptPasswordEncoder().encode("123456")).roles("USER");
+//        auth.inMemoryAuthentication()
+//                .passwordEncoder(new BCryptPasswordEncoder()).withUser("admin")
+//                .password(new BCryptPasswordEncoder().encode("123456")).roles("USER");
 
     }
 
