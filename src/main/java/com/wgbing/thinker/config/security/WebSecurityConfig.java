@@ -71,7 +71,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/auth")
-                .defaultSuccessUrl("/index")
                 .failureUrl("/login?error")
                 .and()
             .logout() //logout config
@@ -146,12 +145,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         CustomSecurityFilter customSecurityFilter=new CustomSecurityFilter();
         customSecurityFilter.setAuthenticationManager(authenticationManagerBean());
         return customSecurityFilter;
-    }
-
-    @Bean
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
     }
 
     @Autowired

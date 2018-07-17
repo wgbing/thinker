@@ -45,7 +45,7 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
         super();
         SimpleUrlAuthenticationFailureHandler simpleUrlAuthenticationFailureHandler = new SimpleUrlAuthenticationFailureHandler(errorUrl);
         simpleUrlAuthenticationFailureHandler.setUseForward(true);
-        setAuthenticationFailureHandler(simpleUrlAuthenticationFailureHandler);
+        this.setAuthenticationFailureHandler(simpleUrlAuthenticationFailureHandler);
 
         this.setUsernameParameter(USERNAME);
         this.setPasswordParameter(PASSWORD);
