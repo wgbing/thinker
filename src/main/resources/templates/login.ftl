@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="/plugins/adminlte/dist/css/AdminLTE.min.css">
   <!-- iCheck -->
   <link rel="stylesheet" href="/plugins/adminlte/plugins/iCheck/square/blue.css">
+  <!-- bootstrap-validator -->
+  <link rel="stylesheet" href="/plugins/adminlte/plugins/bootstrap-validator/css/bootstrapValidator.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -30,13 +32,13 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Thinker</b>-思想者</a>
+    <a href="#"><b>Thinker</b>-思想者</a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Sign in to start your session</p>
 
-    <form action="/auth" method="post">
+    <form action="/auth" method="post" id="login_form">
      <#if _csrf?? && _csrf.parameterName??>
            <input type="hidden" name="${_csrf.parameterName?default('_csrf')}" value="${_csrf.token?default('')}"/>
      </#if>
@@ -75,7 +77,7 @@
       </div>
       <div class="row">
           <div class="col-xs-12">
-              <button type="submit" class="btn btn-danger btn-block btn-flat">登 录</button>
+              <button type="submit" class="btn btn-danger btn-block btn-flat" onclick="">登 录</button>
           </div>
       </div>
     </form>
@@ -106,13 +108,37 @@
 <script src="/plugins/adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- iCheck -->
 <script src="/plugins/adminlte/plugins/iCheck/icheck.min.js"></script>
+<!-- bootstrap-validator -->
+<script src="/plugins/adminlte/plugins/bootstrap-validator/js/bootstrapValidator.js"></script>
 <script>
   $(function () {
+    //初始化iCheck
     $('input').iCheck({
       checkboxClass: 'icheckbox_square-blue',
       radioClass: 'iradio_square-blue',
       increaseArea: '20%' /* optional */
     });
+
+    $("#login_form").bootstrapValidator({
+      message:'请输入用户名/密码',
+      fields:{
+          username:{
+              validators:{
+                  notEmpty:{
+                      message:'用户名不能为空'
+                  }
+              }
+          },
+          password:{
+              validators:{
+                  notEmpty:{
+                      message:'密码不能为空'
+                  }
+              }
+          }
+      }
+    });
+
   });
 </script>
 </body>
