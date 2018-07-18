@@ -38,7 +38,7 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
+    <p class="login-box-msg">Thinker 欢迎你</p>
 
     <form action="/auth" method="post" id="login_form">
      <#if _csrf?? && _csrf.parameterName??>

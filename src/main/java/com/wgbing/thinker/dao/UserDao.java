@@ -12,6 +12,6 @@ import org.springframework.data.jpa.repository.Query;
  */
 public interface UserDao extends JpaRepository<User, Long> {
 
-    @Query(" select u from User u where u.deleted = false and (u.mobile = ?1 or u.email = ?2) ")
+    @Query(" select u from User u where u.deleted = false and u.loginName =?1 ")
     User findUserByUsername(String username);
 }
