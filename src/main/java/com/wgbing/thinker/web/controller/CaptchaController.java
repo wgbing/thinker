@@ -1,4 +1,4 @@
-package com.wgbing.thinker.web;
+package com.wgbing.thinker.web.controller;
 
 
 import com.github.bingoohuang.patchca.color.ColorFactory;
