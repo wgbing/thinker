@@ -80,22 +80,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-    /**
-     * TODO: 重写父类方法，添加自定义用户及角色
-     * @author wgbing
-     * @date 2018/7/11 9:43
-     * @param auth
-     * @return
-     * @throws
-     */
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication()
-//                .passwordEncoder(new BCryptPasswordEncoder()).withUser("admin")
-//                .password(new BCryptPasswordEncoder().encode("123456")).roles("USER");
-
-    }
-
     @Override
     @Bean
     public UserDetailsService userDetailsService() {
@@ -157,6 +141,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public HttpSessionEventPublisher httpSessionEventPublisher() {
         return new HttpSessionEventPublisher();
     }
-
 
 }
