@@ -2,7 +2,6 @@ package com.wgbing.thinker.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.autoconfigure.orm.jpa.HibernateSettings;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +22,7 @@ import java.util.Map;
 @EnableJpaRepositories(
         entityManagerFactoryRef = "entityManagerFactory",
         transactionManagerRef = "transactionManager",
-        basePackages = {"com.wgbing.thinker.dao"},//设置Repository所在位置
+        basePackages = {"com.wgbing.thinker.dao"},
         repositoryImplementationPostfix = "Impl")
 public class JpaConfig {
 
@@ -50,17 +49,15 @@ public class JpaConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder) {
         return builder
                 .dataSource(dataSource)
-                .properties(getVendorProperties())
+                .properties(getVendorProperties(dataSource))
                 .packages("com.wgbing.thinker.domain") //设置实体类所在位置
                 .persistenceUnit("primaryPersistenceUnit")
                 .build();
     }
 
-
-    private Map<String, Object> getVendorProperties() {
-        return jpaProperties.getHibernateProperties(new HibernateSettings());
+    private Map<String, String> getVendorProperties(DataSource dataSource) {
+        return jpaProperties.getHibernateProperties(dataSource);
     }
-
 
     @Primary
     @Bean(name = "transactionManager")

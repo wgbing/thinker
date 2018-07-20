@@ -2,8 +2,10 @@ package com.wgbing.thinker.config.security;
 
 import com.wgbing.thinker.utils.EncryptUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -31,6 +33,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)//开启security注解
+@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -77,22 +80,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .invalidateHttpSession(true)
                 .logoutSuccessUrl("/login");
-
-    }
-
-    /**
-     * TODO: 重写父类方法，添加自定义用户及角色
-     * @author wgbing
-     * @date 2018/7/11 9:43
-     * @param auth
-     * @return
-     * @throws
-     */
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication()
-//                .passwordEncoder(new BCryptPasswordEncoder()).withUser("admin")
-//                .password(new BCryptPasswordEncoder().encode("123456")).roles("USER");
 
     }
 
@@ -145,6 +132,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         CustomSecurityFilter customSecurityFilter=new CustomSecurityFilter();
         customSecurityFilter.setAuthenticationManager(authenticationManagerBean());
         return customSecurityFilter;
+    }
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
     }
 
     @Autowired
