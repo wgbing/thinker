@@ -17,6 +17,10 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="/plugins/adminlte/dist/css/skins/_all-skins.min.css">
+    <!-- A link to a jQuery UI ThemeRoller theme, more than 22 built-in and many more custom -->
+    <link rel="stylesheet" href="/libs/jqGrid/css/jquery-ui.css" />
+    <!-- The link to the CSS that the grid needs -->
+    <link rel="stylesheet" href="/libs/jqGrid/css/ui.jqgrid.css" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -63,15 +67,48 @@
                 <!-- /.box-header -->
 
                 <div class="box-body with-border">
-                    <!-- SearchTable -->
-                    <table id="tbl_search" class="table table-bordered table-striped table-search hidden">
-                        <tr>
-                            <td style="width:10%">员工姓名：</td>
-                            <td style="width:15%"><input type="text" class="form-control" autocomplete="off" id="empName" placeholder="员工姓名"/></td>
-                            <td style="width:10%">店铺名称：</td>
-
-                        </tr>
-                    </table>
+                    <!-- searchForm -->
+                    <form id="searchForm" name="searchForm" class="form-inline">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4" title="">
+                                        <span class="required hide">*</span> 文本：<i class="fa icon-question hide"></i></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4" title="">
+                                        <span class="required hide">*</span> 文本：<i class="fa icon-question hide"></i></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4" title="">
+                                        <span class="required hide">*</span> 文本：<i class="fa icon-question hide"></i></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-4" title="">
+                                        <span class="required hide">*</span> 文本：<i class="fa icon-question hide"></i></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- /.searchForm -->
 
 
                     <table id="dataGrid"></table>
@@ -91,16 +128,6 @@
 </div>
 <!-- ./wrapper -->
 
-<script>
-    function showSearch() {
-        console.log(11);
-        $("#tbl_search").show();
-    }
-
-
-
-</script>
-
 <!-- jQuery 3 -->
 <script src="/plugins/adminlte/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
@@ -111,5 +138,19 @@
 <script src="/plugins/adminlte/bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="/plugins/adminlte/dist/js/adminlte.min.js"></script>
+<!-- This is the Javascript file of jqGrid -->
+<script src="/libs/js/jquery.jqGrid.min.js"></script>
+<script src="/libs/js/i18n/grid.locale-cn.js"></script>
+<script>
+function showSearch() {
+    console.log(11);
+    if($("#searchForm").is(':visible')){
+        $("#searchForm").hide();
+    }else {
+        $("#searchForm").show();
+    }
+    console.log(12);
+}
+</script>
 </body>
 </html>
