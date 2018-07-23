@@ -152,9 +152,9 @@ function showSearch() {
     }
 }
 
-jQuery(document).ready(function($) {
-    jQuery('#dataGrid').jqGrid({
-        "url":"data.json",
+$(document).ready(function($) {
+    $('#dataGrid').jqGrid({
+        "url":"/org/list",
         "colModel":[
             {
                 "name":"category_id",
@@ -230,6 +230,69 @@ jQuery(document).ready(function($) {
         "datatype":"json",
         "pager":"#pager"
     });
+
+    $(function(){
+        $("#dataGrid").jqGrid({
+            treeGrid: true,
+            treeGridModel: 'adjacency',   // treeGrid模式，跟json元数据有关
+            ExpandColumn : 'menuName',    // 一般设置第一行
+            ExpandColClick : true,        // 是否可以点击
+            url: '/org/list',             // 获取数据url
+            datatype: 'json',
+            colNames:['主键','机构名称','机构简称','排序号','机构类型','更新时间','备注信息','状态','操作'],
+            colModel:[
+                {name:'id',index:'id', hidden:true},
+                {name:'name',index:'name', width:250,align:"left"},
+                {name:'shortName',index:'shortName', width:250,align:"left"},
+                {name:'sortNo',index:'sortNo', width:80, align:"center"},
+                {name:'type',index:'type', width:100, align:"center"},
+                {name:'updateTime',index:'updateTime', width:150, align:"center"},
+                {name:'remark',index:'remark', width:200, align:"left"},
+                {name:'status',index:'status', width:80, align:"center"},
+                // 自定义按钮，显示在table的最后一栏
+                {name:'actions',sortable:false, title:false, width:150 , align:'center',
+                    formatter: function (cellvalue, options, rowObject) {
+                        var buttons = "";
+                        buttons += "<button href=\"#\" class=\"ui-button ui-corner-all ui-widget\" onclick=\"bianji('"+options.rowId+"')\">编辑</button>";
+                        // 判断是有还有子菜单，如果有子菜单多生成一个添加子菜单按钮
+                        if(!rowObject.isLeaf){
+                            buttons += "&nbsp;<button href=\"#\" class=\"ui-button ui-corner-all ui-widget\" onclick=\"tianjia('"+options.rowId+"')\">添加子菜单</button>";
+                        }
+                        return  buttons;
+                    }
+                }
+            ],
+            pager:"#pager",         // 显示分页div的id
+            viewrecords: true,      // 是否显示信息条数
+            jsonReader: {           // 设置读取数据时的字段
+                root: "rows",       // json中代表实际模型数据的入口
+                page: "page",       // json中代表当前页码的数据
+                total: "total",     // json中代表页码总数的数据
+                records: "records", // json中代表数据行总数的数据
+                repeatitems: false, // 如果设为false，则jqGrid在解析json时，会根据name来搜索对应的数据元素
+                id: "id"          // 设置rowid
+            },
+            treeReader : {           //设置树形显示时4个关键字段对应的返回数据字段
+                level_field: "level",      // 属性层级
+                parent_id_field: "parent", //父级rowid
+                leaf_field: "isLeaf",      //是否还有子级菜单
+                expanded_field: "expanded" //是否加载完毕
+            },
+            caption: "菜单管理",
+            mtype: "POST",
+            height: "auto",    // 设为具体数值则会根据实际记录数出现垂直滚动条
+            rowNum : "-1",     // 显示全部记录
+            shrinkToFit:false  // 控制水平滚动条
+        });
+        // 自定义jq按钮
+        $("#dataGrid").jqGrid("navGrid", "#pager", {
+            addfunc : AddOrModifyBtn,          // (1) 点击添加按钮
+            editfunc : AddOrModifyBtn,         // (2) 点击编辑按钮
+            delfunc : Deleting,                // (3) 点击删除按钮
+            alerttext : "请选择需要操作的数据行!"  // (4) 当未选中任何行而点击编辑、删除、查看按钮时，弹出的提示信息
+        });
+    });
+
 });
 
 </script>

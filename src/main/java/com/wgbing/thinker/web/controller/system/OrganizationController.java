@@ -22,4 +22,8 @@ public class OrganizationController {
         return "/system/org/index";
     }
 
+    @GetMapping("/list")
+    public String list(){
+        return null;
+    }
 }
