@@ -28,8 +28,6 @@
   <script src="/plugins/adminlte/plugins/respond/respond.min.js"></script>
     <![endif]-->
 
-    <!-- Google Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body>
 <div>
@@ -139,97 +137,99 @@
 <!-- AdminLTE App -->
 <script src="/plugins/adminlte/dist/js/adminlte.min.js"></script>
 <!-- This is the Javascript file of jqGrid -->
+<script src="/libs/jqGrid-4.8.2/js/jquery-ui.js"></script>
 <script src="/libs/jqGrid-4.8.2/js/jquery.jqGrid.js"></script>
 <script src="/libs/jqGrid-4.8.2/js/i18n/grid.locale-cn.js"></script>
 <script>
-function showSearch() {
-    if($("#searchForm").is(':visible')){
-        $("#searchForm").hide();
-        $("#btnSearch").html($("#btnSearch").html().replace("隐藏","查询"));
-    }else {
-        $("#searchForm").show();
-        $("#btnSearch").html($("#btnSearch").html().replace("查询","隐藏"));
+    function showSearch() {
+        if($("#searchForm").is(':visible')){
+            $("#searchForm").hide();
+            $("#btnSearch").html($("#btnSearch").html().replace("隐藏","查询"));
+        }else {
+            $("#searchForm").show();
+            $("#btnSearch").html($("#btnSearch").html().replace("查询","隐藏"));
+        }
     }
-}
 
-$(document).ready(function($) {
-    $('#dataGrid').jqGrid({
-        "url":"/org/list",
-        "colModel":[
-            {
-                "name":"category_id",
-                "index":"accounts.account_id",
-                "sorttype":"int",
-                "key":true,
-                "hidden":true,
-                "width":50
-            },{
-                "name":"name",
-                "index":"name",
-                "sorttype":"string",
-                "label":"机构名称",
-                "width":170
-            },{
-                "name":"name",
-                "index":"name",
-                "sorttype":"string",
-                "label":"机构全称",
-                "width":170
-            },{
-                "name":"price",
-                "index":"price",
-                "sorttype":"numeric",
-                "label":"Price",
-                "width":90,
-                "align":"right"
-            },{
-                "name":"qty_onhand",
-                "index":"qty_onhand",
-                "sorttype":"int",
-                "label":"Qty",
-                "width":90,
-                "align":"right"
-            },{
-                "name":"color",
-                "index":"color",
-                "sorttype":"string",
-                "label":"Color",
-                "width":100
-            },{
-                "name":"uiicon",
-                "hidden":true
-            }
-        ],
-        "width":"780",
-        "hoverrows":false,
-        "viewrecords":false,
-        "gridview":true,
-        "height":"auto",
-        "sortname":"lft",
-        "loadonce":true,
-        "rowNum":100,
-        "scrollrows":true,
-        "treeGrid":true,// 启用树结构表格
-        // which column is expandable
-        "ExpandColumn":"name",
-        // datatype
-        "treedatatype":"json",
-        // the model used
-        "treeGridModel":"nested",
-        // configuration of the data comming from server
-        "treeReader":{
-            "left_field":"lft",
-            "right_field":"rgt",
-            "level_field":"level",
-            "leaf_field":"isLeaf",
-            "expanded_field":"expanded",
-            "loaded":"loaded",
-            "icon_field":"icon"
-        },
-        "sortorder":"asc",
-        "datatype":"json",
-        "pager":"#pager"
-    });
+// $(document).ready(function($) {
+//         $('#dataGrid').jqGrid({
+//             "url":"/org/list",
+//             "colModel":[
+//                 {
+//                     "name":"category_id",
+//                     "index":"accounts.account_id",
+//                     "sorttype":"int",
+//                     "key":true,
+//                     "hidden":true,
+//                     "width":50
+//                 },{
+//                     "name":"name",
+//                     "index":"name",
+//                     "sorttype":"string",
+//                     "label":"机构名称",
+//                     "width":170
+//                 },{
+//                     "name":"name",
+//                     "index":"name",
+//                     "sorttype":"string",
+//                     "label":"机构全称",
+//                     "width":170
+//                 },{
+//                     "name":"price",
+//                     "index":"price",
+//                     "sorttype":"numeric",
+//                     "label":"Price",
+//                     "width":90,
+//                     "align":"right"
+//                 },{
+//                     "name":"qty_onhand",
+//                     "index":"qty_onhand",
+//                     "sorttype":"int",
+//                     "label":"Qty",
+//                     "width":90,
+//                     "align":"right"
+//                 },{
+//                     "name":"color",
+//                     "index":"color",
+//                     "sorttype":"string",
+//                     "label":"Color",
+//                     "width":100
+//                 },{
+//                     "name":"uiicon",
+//                     "hidden":true
+//                 }
+//             ],
+//             "width":"780",
+//             "hoverrows":false,
+//             "viewrecords":false,
+//             "gridview":true,
+//             "height":"auto",
+//             "sortname":"lft",
+//             "loadonce":true,
+//             "rowNum":100,
+//             "scrollrows":true,
+//             "treeGrid":true,// 启用树结构表格
+//             // which column is expandable
+//             "ExpandColumn":"name",
+//             // datatype
+//             "treedatatype":"json",
+//             // the model used
+//             "treeGridModel":"nested",
+//             // configuration of the data comming from server
+//             "treeReader":{
+//                 "left_field":"lft",
+//                 "right_field":"rgt",
+//                 "level_field":"level",
+//                 "leaf_field":"isLeaf",
+//                 "expanded_field":"expanded",
+//                 "loaded":"loaded",
+//                 "icon_field":"icon"
+//             },
+//             "sortorder":"asc",
+//             "datatype":"json",
+//             "pager":"#pager"
+//         });
+// });
 
     $(function(){
         $("#dataGrid").jqGrid({
@@ -242,22 +242,22 @@ $(document).ready(function($) {
             colNames:['主键','机构名称','机构简称','排序号','机构类型','更新时间','备注信息','状态','操作'],
             colModel:[
                 {name:'id',index:'id', hidden:true},
-                {name:'name',index:'name', width:250,align:"left"},
-                {name:'shortName',index:'shortName', width:250,align:"left"},
-                {name:'sortNo',index:'sortNo', width:80, align:"center"},
-                {name:'type',index:'type', width:100, align:"center"},
-                {name:'updateTime',index:'updateTime', width:150, align:"center"},
-                {name:'remark',index:'remark', width:200, align:"left"},
-                {name:'status',index:'status', width:80, align:"center"},
+                {name:'name',index:'name', width:250,align:"left",frozen:true},
+                {name:'shortName',index:'shortName', align:"left"},
+                {name:'sortNo',index:'sortNo',  align:"center"},
+                {name:'type',index:'type',  align:"center"},
+                {name:'updateTime',index:'updateTime', align:"center"},
+                {name:'remark',index:'remark', align:"left"},
+                {name:'status',index:'status', align:"center"},
                 // 自定义按钮，显示在table的最后一栏
-                {name:'actions',sortable:false, title:false, width:150 , align:'center',
+                {name:'actions',sortable:false, title:false, align:'center',
                     formatter: function (cellvalue, options, rowObject) {
                         var buttons = "";
-                        buttons += "<button href=\"#\" class=\"ui-button ui-corner-all ui-widget\" onclick=\"bianji('"+options.rowId+"')\">编辑</button>";
+                        // buttons += "<button href="#" class="ui-button ui-corner-all ui-widget" onclick="">编辑</button>";
                         // 判断是有还有子菜单，如果有子菜单多生成一个添加子菜单按钮
-                        if(!rowObject.isLeaf){
-                            buttons += "&nbsp;<button href=\"#\" class=\"ui-button ui-corner-all ui-widget\" onclick=\"tianjia('"+options.rowId+"')\">添加子菜单</button>";
-                        }
+                        // if(!rowObject.isLeaf){
+                        //     buttons += "&nbsp;<button href="#" class="ui-button ui-corner-all ui-widget" onclick="">添加子菜单</button>";
+                        // }
                         return  buttons;
                     }
                 }
@@ -278,23 +278,29 @@ $(document).ready(function($) {
                 leaf_field: "isLeaf",      //是否还有子级菜单
                 expanded_field: "expanded" //是否加载完毕
             },
-            caption: "菜单管理",
-            mtype: "POST",
+            // caption: "菜单管理",
+            mtype: "GET",
+            width:"100%",
+            autowidth:true,
             height: "auto",    // 设为具体数值则会根据实际记录数出现垂直滚动条
             rowNum : "-1",     // 显示全部记录
             shrinkToFit:false  // 控制水平滚动条
         });
         // 自定义jq按钮
-        $("#dataGrid").jqGrid("navGrid", "#pager", {
-            addfunc : AddOrModifyBtn,          // (1) 点击添加按钮
-            editfunc : AddOrModifyBtn,         // (2) 点击编辑按钮
-            delfunc : Deleting,                // (3) 点击删除按钮
-            alerttext : "请选择需要操作的数据行!"  // (4) 当未选中任何行而点击编辑、删除、查看按钮时，弹出的提示信息
+        // $("#dataGrid").jqGrid("navGrid", "#pager", {
+        //     addfunc : AddOrModifyBtn,          // (1) 点击添加按钮
+        //     editfunc : AddOrModifyBtn,         // (2) 点击编辑按钮
+        //     delfunc : Deleting,                // (3) 点击删除按钮
+        //     alerttext : "请选择需要操作的数据行!"  // (4) 当未选中任何行而点击编辑、删除、查看按钮时，弹出的提示信息
+        // });
+    });
+    $(function(){
+        $(window).resize(function(){
+            $(window).unbind("onresize");
+            $("#dataGrid").setGridWidth($(window).width());
+            $(window).bind("onresize", this);
         });
     });
-
-});
-
 </script>
 </body>
 </html>
