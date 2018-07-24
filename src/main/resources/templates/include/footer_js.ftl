@@ -8,7 +8,8 @@
 <script src="/plugins/adminlte/bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="/plugins/adminlte/dist/js/adminlte.min.js"></script>
-<!-- This is the Javascript file of jqGrid -->
-<script src="/libs/jqGrid-4.8.2/js/jquery-ui.js"></script>
-<script src="/libs/jqGrid-4.8.2/js/jquery.jqGrid.js"></script>
-<script src="/libs/jqGrid-4.8.2/js/i18n/grid.locale-cn.js"></script>
+<!-- Tree Grid-->
+<script src="/plugins/treegrid/jquery.treegrid.min.js"></script>
+<script src="/plugins/treegrid/jquery.treegrid.bootstrap3.js"></script>
+<script src="/plugins/treegrid/jquery.treegrid.extension.js"></script>
+<script src="/plugins/treegrid/tree.table.js"></script>
