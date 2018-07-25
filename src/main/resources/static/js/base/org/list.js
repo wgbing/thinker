@@ -98,16 +98,30 @@ TreeGrid.initColumn = function () {
         {title: '机构类型', field: 'type', align: 'center', valign: 'middle', width: '100px'},
         {title: '更新时间', field: 'updateTime', align: 'center', valign: 'middle', width: '150px'},
         {title: '备注信息', field: 'remark', align: 'center', valign: 'middle', width: '200px'},
-        {title: '状态', field: 'status', align: 'center', valign: 'middle', width: '80px',
+        {title: '状态', field: 'enable', align: 'center', valign: 'middle', width: '80px',
             formatter: function(item, index){
-                if(item.status === 0){
-                    return '<i class="fa fa-toggle-off"></i>';
-                }
-                if(item.status === 1){
-                    return '<i class="fa fa-toggle-on"></i>';
+                if(item.enable){
+                    return "<span class='label label-success'>正常</span>";
+                }else{
+                    return "<span class='label label-danger'>禁用</span>";
                 }
             }
         },
-        {title: '操作', align: 'center', valign: 'middle', width: '150px'}]
+        {title: '操作', align: 'center', valign: 'middle', width: '250px',
+            formatter: function(item, index){
+                console.log(index);
+                var html = "<div class='btn-operate-wrapper'>";
+                html += "<button id='btn_view' class='btn btn-info btn-xs btn-operate' param-id='"+item.id+"'>查看</button>";
+                html += "<button id='btn_edit' class='btn btn-warning btn-xs btn-operate' param-id='"+item.id+"'>修改</button>";
+                if (item.enable) {
+                    html += "<button id='btn_ctrl' class='btn btn-danger btn-xs btn-operate' param-id='"+item.id+"' param-enable='0'>禁用</button>";
+                } else {
+                    html += "<button id='btn_ctrl' class='btn btn-success btn-xs btn-operate' param-id='"+item.id+"' param-enable='1'>启用</button>";
+                }
+
+                html += "</div>";
+                return html;
+            }
+        }]
     return columns;
 };
