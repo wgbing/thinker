@@ -13,3 +13,5 @@
 <script src="/plugins/treegrid/jquery.treegrid.bootstrap3.js"></script>
 <script src="/plugins/treegrid/jquery.treegrid.extension.js"></script>
 <script src="/plugins/treegrid/tree.table.js"></script>
+<!-- 自定义通用数据 -->
+<script src="/js/cdl-codemap.js"></script>

@@ -15,10 +15,10 @@ function initialPage() {
 
 function getGrid() {
 	var colunms = TreeGrid.initColumn();
-    var table = new TreeTable(TreeGrid.id, '/org/list?_' + $.now(), colunms);
-    table.setExpandColumn(2);
-    table.setIdField("orgId");
-    table.setCodeField("orgId");
+    var table = new TreeTable(TreeGrid.id, '/sys/org/list?_' + $.now(), colunms);
+    table.setExpandColumn(0);
+    table.setIdField("id");
+    table.setCodeField("id");
     table.setParentCodeField("parentId");
     table.setExpandAll(false);
     table.setHeight($(window).height()-100);
@@ -90,19 +90,24 @@ var TreeGrid = {
  */
 TreeGrid.initColumn = function () {
     var columns = [
-        {field: 'selectItem', radio: true},
-        {title: '编号', field: 'orgId', visible: false, align: 'center', valign: 'middle', width: '80px'},
-        {title: '名称', field: 'name', align: 'center', valign: 'middle'},
-        {title: '机构编码', field: 'code', align: 'center', valign: 'middle', width: '200px'},
-        {title: '上级机构', field: 'parentName', align: 'center', valign: 'middle', width: '300px'},
-        {title: '可用', field: 'status', align: 'center', valign: 'middle', width: '60px', formatter: function(item, index){
-        	if(item.status === 0){
-                return '<i class="fa fa-toggle-off"></i>';
+        // {field: 'selectItem', radio: true},
+        // {field: 'id', hidden: true},
+        {title: '机构名称', field: 'name', align: 'center', valign: 'middle',width:'250px'},
+        {title: '机构简称', field: 'shortName', align: 'center', valign: 'middle', width: '200px'},
+        {title: '排序号', field: 'sortNo', align: 'center', valign: 'middle', width: '80px'},
+        {title: '机构类型', field: 'type', align: 'center', valign: 'middle', width: '100px'},
+        {title: '更新时间', field: 'updateTime', align: 'center', valign: 'middle', width: '150px'},
+        {title: '备注信息', field: 'remark', align: 'center', valign: 'middle', width: '200px'},
+        {title: '状态', field: 'status', align: 'center', valign: 'middle', width: '80px',
+            formatter: function(item, index){
+                if(item.status === 0){
+                    return '<i class="fa fa-toggle-off"></i>';
+                }
+                if(item.status === 1){
+                    return '<i class="fa fa-toggle-on"></i>';
+                }
             }
-            if(item.status === 1){
-                return '<i class="fa fa-toggle-on"></i>';
-            }
-        }},
-        {title: '排序', field: 'orderNum', align: 'center', valign: 'middle', width: '80px'}]
+        },
+        {title: '操作', align: 'center', valign: 'middle', width: '150px'}]
     return columns;
 };
