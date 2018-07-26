@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -25,14 +26,31 @@ public class OrganizationController {
     @Autowired
     private OrganizationService organizationService;
 
+    /**
+     * TODO: 系统管理 | 组织管理页面
+     * @author wgbing
+     * @date 2018/7/26 下午11:23
+     */
     @GetMapping("/index")
     public String orgIndex(){
         return "/base/org/list";
     }
 
+    /**
+     * TODO: 组织列表
+     * @author wgbing
+     * @date 2018/7/26 下午11:24
+     */
     @ResponseBody
     @GetMapping("/list")
     public List<OrganizationVo> list(){
-        return organizationService.list();
+        return organizationService.listOrg();
     }
+
+    @GetMapping("/edit")
+    public String edit(@RequestParam(value = "orgId",required = true) Long orgId){
+        OrganizationVo orgVo = organizationService.findOne(orgId);
+        return "/base/org/edit";
+    }
+
 }

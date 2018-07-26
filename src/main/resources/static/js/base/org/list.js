@@ -95,7 +95,11 @@ TreeGrid.initColumn = function () {
         {title: '机构名称', field: 'name', align: 'center', valign: 'middle',width:'250px'},
         {title: '机构简称', field: 'shortName', align: 'center', valign: 'middle', width: '200px'},
         {title: '排序号', field: 'sortNo', align: 'center', valign: 'middle', width: '80px'},
-        {title: '机构类型', field: 'type', align: 'center', valign: 'middle', width: '100px'},
+        {title: '机构类型', field: 'type', align: 'center', valign: 'middle', width: '100px',
+            formatter: function(item, index){
+                return CODE_MAP.ORG.TYPE[item.type];
+            }
+        },
         {title: '更新时间', field: 'updateTime', align: 'center', valign: 'middle', width: '150px'},
         {title: '备注信息', field: 'remark', align: 'center', valign: 'middle', width: '200px'},
         {title: '状态', field: 'enable', align: 'center', valign: 'middle', width: '80px',
@@ -107,21 +111,62 @@ TreeGrid.initColumn = function () {
                 }
             }
         },
-        {title: '操作', align: 'center', valign: 'middle', width: '250px',
+        {title: '操作', align: 'center', valign: 'middle', width: '300px',
             formatter: function(item, index){
-                console.log(index);
-                var html = "<div class='btn-operate-wrapper'>";
-                html += "<button id='btn_view' class='btn btn-info btn-xs btn-operate' param-id='"+item.id+"'>查看</button>";
-                html += "<button id='btn_edit' class='btn btn-warning btn-xs btn-operate' param-id='"+item.id+"'>修改</button>";
-                if (item.enable) {
-                    html += "<button id='btn_ctrl' class='btn btn-danger btn-xs btn-operate' param-id='"+item.id+"' param-enable='0'>禁用</button>";
-                } else {
-                    html += "<button id='btn_ctrl' class='btn btn-success btn-xs btn-operate' param-id='"+item.id+"' param-enable='1'>启用</button>";
+                // var html = "<div class='btn-operate-wrapper'>";
+                // html += "<button id='btn_view' class='btn btn-info btn-xs btn-operate' param-id='"+item.id+"'>查看</button>";
+                // html += "<button id='btn_edit' class='btn btn-warning btn-xs btn-operate' param-id='"+item.id+"'>修改</button>";
+                // if (item.enable) {
+                //     html += "<button id='btn_ctrl' class='btn btn-danger btn-xs btn-operate' param-id='"+item.id+"' param-enable='0'>禁用</button>";
+                // } else {
+                //     html += "<button id='btn_ctrl' class='btn btn-success btn-xs btn-operate' param-id='"+item.id+"' param-enable='1'>启用</button>";
+                // }
+
+                // html += "</div>";
+                // return html;
+                console.log(item);
+                var orgId = item.id;
+                var actions = [];
+                actions.push('<a href="javascript:void(0)" onclick="edit(orgId)" class="btnList animated pulse" title="编辑机构"><i class="fa fa-pencil"></i></a>&nbsp;');
+                if (item.enable){
+                    actions.push('<a href="/sys/org/disable?orgId='+item.id+'" class="btnList" title="停用机构" data-confirm="确认要停用该机构吗？">' +
+                        '<i class="glyphicon glyphicon-ban-circle"></i></a>&nbsp;');
+                }else{
+                    actions.push('<a href="/sys/org/enable?orgId='+item.id+'" class="btnList" title="启用机构" data-confirm="确认要启用该机构吗">' +
+                        '<i class="glyphicon glyphicon-ok-circle"></i></a>&nbsp;');
                 }
 
-                html += "</div>";
-                return html;
+                actions.push('<a href="/sys/org/delete?orgId='+item.id+'" class="btnList" title="删除机构" data-confirm="确认要删除该机构及所有子机构吗？" data-deltreenode="'+item.id+'">' +
+                    '<i class="fa fa-trash-o"></i></a>&nbsp;');
+                actions.push('<a href="/sys/org/form?parentCode='+item.id+'" class="btnList" title="新增下级机构">' +
+                    '<i class="fa fa-plus-square"></i></a>&nbsp;');
+                return actions.join('');
+
             }
         }]
     return columns;
 };
+
+function edit(orgId){
+    console.log(orgId);
+    layer.open({
+        type: 2,
+        title: '编辑机构',
+        shadeClose: true,
+        shade: false,
+        maxmin: true, //开启最大化最小化按钮
+        area: ['500px', '315px'],
+        content: '/sys/org/edit?orgId'+orgId
+    });
+}
+
+
+function showSearch() {
+    if($("#searchForm").is(':visible')){
+        $("#searchForm").hide();
+        $("#btnSearch").html($("#btnSearch").html().replace("隐藏","查询"));
+    }else {
+        $("#searchForm").show();
+        $("#btnSearch").html($("#btnSearch").html().replace("查询","隐藏"));
+    }
+}

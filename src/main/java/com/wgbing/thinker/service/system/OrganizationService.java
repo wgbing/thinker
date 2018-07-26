@@ -1,7 +1,6 @@
 package com.wgbing.thinker.service.system;
 
 import cn.hutool.core.date.DateUtil;
-import cn.hutool.core.util.StrUtil;
 import com.wgbing.thinker.dao.OrganizationDao;
 import com.wgbing.thinker.domain.Organization;
 import com.wgbing.thinker.vo.OrganizationVo;
@@ -27,7 +26,7 @@ public class OrganizationService {
     @Autowired
     private OrganizationDao organizationDao;
 
-    public List<OrganizationVo> list() {
+    public List<OrganizationVo> listOrg() {
         List<OrganizationVo> orgVoList = new ArrayList<>();
         List<Organization> orgList = this.organizationDao.findAll();
         if(orgList != null && !orgList.isEmpty()){
@@ -52,5 +51,29 @@ public class OrganizationService {
             }
         }
         return orgVoList;
+    }
+
+    public OrganizationVo findOne(Long orgId) {
+        OrganizationVo orgVo = new OrganizationVo();
+        if(orgId != null){
+            Organization org = this.organizationDao.findById(orgId).get();
+            orgVo.setId(org.getId());
+            if(org.getParent() != null){
+                orgVo.setParentId(org.getParent().getId());
+            }else {
+                orgVo.setParentId(null);
+            }
+            orgVo.setName(org.getName());
+            orgVo.setShortName(org.getShortName());
+            orgVo.setRemark(org.getRemark());
+            orgVo.setType(org.getType());
+            orgVo.setSortNo(org.getSortNo());
+            orgVo.setEnable(org.getEnable());
+            orgVo.setDeleted(org.getDeleted());
+            orgVo.setCreateTime(DateUtil.formatDate(org.getCreateTime()));
+            orgVo.setUpdateTime(DateUtil.formatDate(org.getUpdateTime()));
+        }
+
+        return orgVo;
     }
 }

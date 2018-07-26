@@ -16,6 +16,10 @@
     <link rel="stylesheet" href="/plugins/adminlte/dist/css/skins/_all-skins.min.css">
     <!-- Tree Grid-->
     <link rel="stylesheet" href="/plugins/treegrid/jquery.treegrid.css">
+    <!-- 通用样式 -->
+    <link rel="stylesheet" href="/css/common.css">
+    <!-- 动画库 -->
+    <link rel="stylesheet" href="/css/animate.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

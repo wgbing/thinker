@@ -8,6 +8,8 @@
 <script src="/plugins/adminlte/bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="/plugins/adminlte/dist/js/adminlte.min.js"></script>
+<!-- layer -->
+<script src="/plugins/layer/layer.js"></script>
 <!-- Tree Grid-->
 <script src="/plugins/treegrid/jquery.treegrid.min.js"></script>
 <script src="/plugins/treegrid/jquery.treegrid.bootstrap3.js"></script>

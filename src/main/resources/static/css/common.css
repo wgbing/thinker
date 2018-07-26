@@ -1,0 +1,10 @@
+/* 表格操作按钮样式 */
+.btn-operate-wrapper button {
+    margin-right: 15px !important;
+}
+.btn-operate {
+    width: 40px !important;
+}
+.btnList {
+    margin-right: 3px !important;
+}

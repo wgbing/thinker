@@ -7,7 +7,11 @@ var CODE_MAP = {
         EXIST   : [],
         ENABLE  : [],
         STATUS  : [],
-        CHECK_STATUS :[]
+        TYPE :[]
+    },
+    //机构组织
+    ORG:{
+        TYPE    : []
     }
 };
 
@@ -33,7 +37,10 @@ CODE_MAP.GENERAL.ENABLE[1] = "<span class='label label-success'>启用</span>";
 CODE_MAP.GENERAL.STATUS[0] = "<span class='label label-danger'>禁用</span>";
 CODE_MAP.GENERAL.STATUS[1] = "<span class='label label-success'>正常</span>";
 
-
+//ORG
+CODE_MAP.ORG.TYPE[1] = "<span class='label label-success'>一级组织</span>";
+CODE_MAP.ORG.TYPE[2] = "<span class='label label-success'>二级组织</span>";
+CODE_MAP.ORG.TYPE[3] = "<span class='label label-success'>三级组织</span>";
 
 
 
