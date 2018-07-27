@@ -18,7 +18,7 @@
 <!-- BootStrap 开关组件 -->
 <script src="/plugins/bootstrap-switch/bootstrap-switch.js"></script>
 <!-- bootstrap-validator -->
-<script src="/plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
+<#--<script src="/plugins/bootstrap-validator/bootstrapValidator.min.js"></script>-->
 <!-- 表单数据验证插件-->
 <script src="/plugins/validator/validator.js"></script>
 <!-- 自定义通用数据 -->

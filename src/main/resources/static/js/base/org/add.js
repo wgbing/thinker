@@ -16,21 +16,21 @@ $('[name="status"]').bootstrapSwitch({
         }
     }
 });
-$(function () {
-    //表单校验
-    $("#addOrg_form").bootstrapValidator({
-        message:'机构通用信息不能为空',
-        fields:{
-            orgName:{
-                validators:{
-                    notEmpty:{
-                        message:'机构名称不能为空'
-                    }
-                }
-            }
-        }
-    });
-});
+// $(function () {
+//     //表单校验
+//     $("#addOrg_form").bootstrapValidator({
+//         message:'机构通用信息不能为空',
+//         fields:{
+//             orgName:{
+//                 validators:{
+//                     notEmpty:{
+//                         message:'机构名称不能为空'
+//                     }
+//                 }
+//             }
+//         }
+//     });
+// });
 
 function formValidator(){
     var from = $("#addOrg_form");
