@@ -8,3 +8,30 @@
 .btnList {
     margin-right: 3px !important;
 }
+/* 弹窗表格样式 */
+.form{width:100%;margin:0px;padding:0px;margin-top:20px;border-collapse:collapse;border-width:3px 1px 1px;table-layout:fixed}
+.form .input-button{border: none;right: 8px;top: 50%;width: 20px;height: 30px;margin-top: -15px;cursor: pointer;overflow: hidden;position: absolute;z-index: 100;}
+.form .formTitle{position:relative;left:0px;text-align:right;white-space:nowrap;font-weight:normal;width:90px;padding-right:10px;}
+.form .formTitle font{color:red;position:absolute;right:0px;}
+.form .formTitle-top {vertical-align:top; padding-top:4px;}
+.form .formValue{position:relative;padding:5px;width:auto;}
+.form .formValue select{padding: 4px;padding-left:4px;}
+.form .formValue .bootstrap-duallistbox-container{margin-top:-32px;margin-left: -12px;}
+.form .formValue .bootstrap-duallistbox-container .btn-box{margin: 78px 16px 0px 16px;}
+.form-control{color:#000;border-radius:0px;box-shadow:none;padding-top:0px;padding-bottom:1px;padding-right:0px;padding-left:5px;resize: none;}
+.form-control:focus{border-color:#337ab7;box-shadow:none;}
+.form textarea.form-control{padding-top: 5px;}
+/* 固定内容底部样式 */
+.content-footer {
+    position: fixed;
+    bottom: 0;
+    width:100%;
+    padding: 10px 15px !important;
+    margin: 0 !important;
+    background-color: #fff;
+    border-top:1px solid #ddd;
+}
+.content-footer button {
+    margin-left: 15px !important;
+}
+

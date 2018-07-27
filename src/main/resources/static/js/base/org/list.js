@@ -90,8 +90,6 @@ var TreeGrid = {
  */
 TreeGrid.initColumn = function () {
     var columns = [
-        // {field: 'selectItem', radio: true},
-        // {field: 'id', hidden: true},
         {title: '机构名称', field: 'name', align: 'center', valign: 'middle',width:'250px'},
         {title: '机构简称', field: 'shortName', align: 'center', valign: 'middle', width: '200px'},
         {title: '排序号', field: 'sortNo', align: 'center', valign: 'middle', width: '80px'},
@@ -113,21 +111,8 @@ TreeGrid.initColumn = function () {
         },
         {title: '操作', align: 'center', valign: 'middle', width: '300px',
             formatter: function(item, index){
-                // var html = "<div class='btn-operate-wrapper'>";
-                // html += "<button id='btn_view' class='btn btn-info btn-xs btn-operate' param-id='"+item.id+"'>查看</button>";
-                // html += "<button id='btn_edit' class='btn btn-warning btn-xs btn-operate' param-id='"+item.id+"'>修改</button>";
-                // if (item.enable) {
-                //     html += "<button id='btn_ctrl' class='btn btn-danger btn-xs btn-operate' param-id='"+item.id+"' param-enable='0'>禁用</button>";
-                // } else {
-                //     html += "<button id='btn_ctrl' class='btn btn-success btn-xs btn-operate' param-id='"+item.id+"' param-enable='1'>启用</button>";
-                // }
-
-                // html += "</div>";
-                // return html;
-                console.log(item);
-                var orgId = item.id;
                 var actions = [];
-                actions.push('<a href="javascript:void(0)" onclick="edit(orgId)" class="btnList animated pulse" title="编辑机构"><i class="fa fa-pencil"></i></a>&nbsp;');
+                actions.push('<a href="javascript:void(0)" onclick="edit('+item.id+')" class="btnList animated pulse" title="编辑机构"><i class="fa fa-pencil"></i></a>&nbsp;');
                 if (item.enable){
                     actions.push('<a href="/sys/org/disable?orgId='+item.id+'" class="btnList" title="停用机构" data-confirm="确认要停用该机构吗？">' +
                         '<i class="glyphicon glyphicon-ban-circle"></i></a>&nbsp;');
@@ -148,25 +133,49 @@ TreeGrid.initColumn = function () {
 };
 
 function edit(orgId){
-    console.log(orgId);
     layer.open({
         type: 2,
         title: '编辑机构',
         shadeClose: true,
-        shade: false,
+        shade: 0.1,
         maxmin: true, //开启最大化最小化按钮
-        area: ['500px', '315px'],
-        content: '/sys/org/edit?orgId'+orgId
+        area: ['500px', '327px'],
+        content: '/sys/org/edit?orgId='+orgId
     });
 }
 
-
+//查询
 function showSearch() {
     if($("#searchForm").is(':visible')){
         $("#searchForm").hide();
-        $("#btnSearch").html($("#btnSearch").html().replace("隐藏","查询"));
+        $("#btn_search").html($("#btn_search").html().replace("隐藏","查询"));
     }else {
         $("#searchForm").show();
-        $("#btnSearch").html($("#btnSearch").html().replace("查询","隐藏"));
+        $("#btn_search").html($("#btn_search").html().replace("查询","隐藏"));
     }
+}
+//刷新
+function refreshTree() {
+    TreeGrid.table.refresh();
+}
+//展开
+function expandTreeNode() {
+    TreeGrid.table.setExpandAll(true);
+}
+//折叠
+function collapseTreeNode() {
+    TreeGrid.table.setExpandAll(false);
+    TreeGrid.table.refresh();
+}
+//新增
+function addOrg() {
+    layer.open({
+        type: 2,
+        title: '新增机构',
+        shadeClose: true,
+        shade: 0.1,
+        maxmin: true, //开启最大化最小化按钮
+        area: ['500px', '327px'],
+        content: '/sys/org/add'
+    });
 }

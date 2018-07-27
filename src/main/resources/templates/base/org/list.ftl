@@ -30,11 +30,11 @@
                         <i class="fa icon-grid"></i> 组织管理
                     </div>
                     <div class="box-tools pull-right">
-                        <a href="#" class="btn btn-default" id="btnSearch" title="查询" onclick="showSearch()"><i class="fa fa-filter"></i> 查询</a>
-                        <a href="#" class="btn btn-default" id="btnRefreshTree" title="刷新"><i class="fa fa-refresh"></i> 刷新</a>
-                        <a href="#" class="btn btn-default" id="btnExpandTreeNode" title="展开一级"><i class="fa fa-angle-double-down"></i> 展开</a>
-                        <a href="#" class="btn btn-default" id="btnCollapseTreeNode" title="折叠全部"><i class="fa fa-angle-double-up"></i> 折叠</a>
-                        <a href="#" class="btn btn-default btnTool"><i class="fa fa-plus" title="新增机构"></i> 新增</a>
+                        <a href="#" class="btn btn-default" id="btn_search" title="查询" onclick="showSearch()"><i class="fa fa-filter"></i> 查询</a>
+                        <a href="#" class="btn btn-default" id="btn_refreshTree" title="刷新" onclick="refreshTree()"><i class="fa fa-refresh"></i> 刷新</a>
+                        <a href="#" class="btn btn-default" id="btn_expandTreeNode" title="展开" onclick="expandTreeNode()"><i class="fa fa-angle-double-down"></i> 展开</a>
+                        <a href="#" class="btn btn-default" id="btn_collapseTreeNode" title="折叠全部" onclick="collapseTreeNode()"><i class="fa fa-angle-double-up"></i> 折叠</a>
+                        <a href="#" class="btn btn-default" id="btn_addOrg" title="新增机构" onclick="addOrg()"><i class="fa fa-plus"></i> 新增</a>
                     </div>
                 </div>
                 <!-- /.box-header -->

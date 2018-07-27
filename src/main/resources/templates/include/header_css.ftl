@@ -20,6 +20,10 @@
     <link rel="stylesheet" href="/css/common.css">
     <!-- 动画库 -->
     <link rel="stylesheet" href="/css/animate.css">
+    <!-- BootStrap 开关组件 -->
+    <link rel="stylesheet" href="/plugins/bootstrap-switch/bootstrap-switch.css">
+    <!-- bootstrap-validator -->
+    <link rel="stylesheet" href="/plugins/bootstrap-validator/bootstrapValidator.min.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -27,3 +31,5 @@
   	<script src="/plugins/adminlte/plugins/respond/respond.min.js"></script>
     <![endif]-->
 
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.proxy.ustclug.org/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">

@@ -47,6 +47,21 @@ public class OrganizationController {
         return organizationService.listOrg();
     }
 
+    /**
+     * TODO: 新增机构
+     * @author wgbing
+     * @date 2018/7/27 16:01
+     */
+    @GetMapping("/add")
+    public String add(){
+        return "/base/org/add";
+    }
+
+    /**
+     * TODO: 编辑机构
+     * @author wgbing
+     * @date 2018/7/27 16:01
+     */
     @GetMapping("/edit")
     public String edit(@RequestParam(value = "orgId",required = true) Long orgId){
         OrganizationVo orgVo = organizationService.findOne(orgId);
