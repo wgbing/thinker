@@ -12,6 +12,8 @@
 <script src="/plugins/layer/layer.js"></script>
 <!-- bootbox -->
 <script src="/plugins/bootbox/bootbox.min.js"></script>
+<!-- toastr -->
+<script src="/plugins/toastr/toastr.min.js"></script>
 <!-- Tree Grid-->
 <script src="/plugins/treegrid/jquery.treegrid.min.js"></script>
 <script src="/plugins/treegrid/jquery.treegrid.bootstrap3.js"></script>
@@ -25,7 +27,7 @@
 <script src="/plugins/jquery-validation/jquery.validate.min.js"></script>
 <script src="/plugins/jquery-validation/messages_zh.js"></script>
 <!-- 表单数据验证插件-->
-<script src="/plugins/validator/validator.js"></script>
+<#--<script src="/plugins/validator/validator.js"></script>-->
 <!-- 自定义通用数据 -->
 <script src="/js/cdl-codemap.js"></script>
 <!--自定义通用JS-->

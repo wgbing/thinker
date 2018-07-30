@@ -14,10 +14,14 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="/plugins/adminlte/dist/css/skins/_all-skins.min.css">
+    <!-- toastr -->
+    <link rel="stylesheet" href="/plugins/toastr/toastr.min.css">
     <!-- Tree Grid-->
     <link rel="stylesheet" href="/plugins/treegrid/jquery.treegrid.css">
     <!-- 通用样式 -->
     <link rel="stylesheet" href="/css/common.css">
+    <!-- jquery-validation error样式 -->
+    <link rel="stylesheet" href="/css/validation.css">
     <!-- 动画库 -->
     <link rel="stylesheet" href="/css/animate.css">
     <!-- BootStrap 开关组件 -->

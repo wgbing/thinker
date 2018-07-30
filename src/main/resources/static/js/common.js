@@ -1,3 +1,19 @@
+/**
+ * 异步错误处理
+ * @param xhr
+ * @param textStatus
+ * @param errorThrown
+ */
+function ajaxErrorHandler(xhr, textStatus, errorThrown) {
+    // session失效
+    if (xhr.status === 401) {
+        toUrl("/login");
+    } else if (xhr.status === 500) {
+        toastr.error("HTTP Status: 500 服务器内部错误", "提示信息");
+    } else {
+        toastr.error("HTTP Status: " + xhr.status, "提示信息");
+    }
+}
 
 formatDate = function (v, format) {
     if (!v) return "";
@@ -58,16 +74,68 @@ isNotNullOrEmpty = function (obj) {
     }
 }
 
-reload = function () {
+function reload() {
     location.reload();
     return false;
 }
+function toUrl(href) {
+    window.location.href = href;
+}
+function dialogAlert(content, type) {
+    var msgType = {
+        success:1,
+        error:2,
+        warn:3,
+        info:7
+    };
+    if(isNullOrEmpty(type)){
+        type='info';
+    }
+    layer.alert(content, {
+        icon: msgType[type],
+        title: "系统提示",
+        anim: -1,
+        btnAlign: 'c',
+        isOutAnim: false
+    });
+}
 
-dialogClose = function() {
+dialogMsg = function(msg, type) {
+    var msgType = {
+        success:1,
+        error:2,
+        warn:3,
+        info:7
+    };
+    if(isNullOrEmpty(type)){
+        type='info';
+    }
+    layer.msg(msg, {
+        icon: msgType[type],
+        time: 2000
+    });
+}
+
+function dialogClose() {
     var index = parent.layer.getFrameIndex(window.name);
     parent.layer.close(index);
 }
 
+function dialogLoading(flag) {
+    if(flag){
+        layer.load(0, {
+            shade: [0.1,'#fff'],
+            time: 2000
+        });
+    }else{
+        layer.closeAll('loading');//关闭加载层
+    }
+}
+function operationCompleted(data) {
+    toastr.success(data.message, "提示信息");
+    layer.closeAll();
+    reload();
+}
 function bootboxConfirm(message, callback) {
     bootbox.confirm({
         title: "提示信息",

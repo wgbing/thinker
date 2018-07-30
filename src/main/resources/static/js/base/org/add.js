@@ -4,22 +4,25 @@
 
 $(function () {
     //开关组件初始化
-    $('[name="status"]').bootstrapSwitch({
+    $('[name="enable"]').bootstrapSwitch({
         onText:"正常",
         offText:"禁止",
         onColor:"success",
         offColor:"danger",
         size:"mini",
         onSwitchChange:function(event,state){
-            if(state==true){
-                $(this).val("1");
-            }else{
-                $(this).val("2");
-            }
+            // if(state==true){
+            //     $(this).val("1");
+            // }else{
+            //     $(this).val("2");
+            // }
         }
     });
     //表单校验
-    var _form = $("#addOrg_form");
+    $.validator.setDefaults({
+        debug: true
+    });
+    var _form = $("#addOrgForm");
     _form.validate({
         rules: {
             orgName: {
@@ -54,8 +57,7 @@ $(function () {
     });
     //确定
     $('#btn_confirm').click(function () {
-        console.log(!_form.validate());
-        if(!_form.validate()){
+        if(!_form.valid()){
             return;
         }
         bootboxConfirm("确认要提交吗？", function(result) {
@@ -63,6 +65,25 @@ $(function () {
                 console.log("新增机构！");
                 var formData = _form.serialize();
                 console.log(formData);
+                var loading = dialogLoading(true);
+                $.ajax({
+                    url: "/sys/org/save",
+                    data: formData,
+                    type: "POST",
+                    dataType: "json",
+                    complete: function (xhr) {
+                        dialogLoading(false);
+                    },
+                    success: function (data) {
+                        if (data.code === 0) {
+                            // 调用父窗口方法完成操作
+                            parent.operationCompleted(data);
+                        } else {
+                            toastr.error(data.message, "提示信息");
+                        }
+                    },
+                    error: ajaxErrorHandler
+                });
             }
         });
     });

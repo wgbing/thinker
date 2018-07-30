@@ -90,7 +90,7 @@ var TreeGrid = {
  */
 TreeGrid.initColumn = function () {
     var columns = [
-        {title: '机构名称', field: 'name', align: 'center', valign: 'middle',width:'250px'},
+        {title: '机构名称', field: 'orgName', align: 'center', valign: 'middle',width:'250px'},
         {title: '机构简称', field: 'shortName', align: 'center', valign: 'middle', width: '200px'},
         {title: '排序号', field: 'sortNo', align: 'center', valign: 'middle', width: '80px'},
         {title: '机构类型', field: 'type', align: 'center', valign: 'middle', width: '100px',

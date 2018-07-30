@@ -1,0 +1,12 @@
+/* 覆盖jquery-validation error样式 */
+input.error {
+    border: 1px solid red !important;
+}
+label.error{
+    font-size: 13px !important;
+    padding: 0px !important;
+    margin: 0px !important;
+    color: #EA5200;
+    font-style: italic;
+    font-weight: normal;
+}

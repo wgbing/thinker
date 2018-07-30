@@ -1,6 +1,7 @@
 package com.wgbing.thinker.service.system;
 
 import cn.hutool.core.date.DateUtil;
+import com.wgbing.thinker.common.R;
 import com.wgbing.thinker.dao.OrganizationDao;
 import com.wgbing.thinker.domain.Organization;
 import com.wgbing.thinker.vo.OrganizationVo;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,7 +41,7 @@ public class OrganizationService {
                 }else {
                     orgVo.setParentId(null);
                 }
-                orgVo.setName(org.getName());
+                orgVo.setOrgName(org.getOrgName());
                 orgVo.setShortName(org.getShortName());
                 orgVo.setRemark(org.getRemark());
                 orgVo.setType(org.getType());
@@ -63,7 +65,7 @@ public class OrganizationService {
             }else {
                 orgVo.setParentId(null);
             }
-            orgVo.setName(org.getName());
+            orgVo.setOrgName(org.getOrgName());
             orgVo.setShortName(org.getShortName());
             orgVo.setRemark(org.getRemark());
             orgVo.setType(org.getType());
@@ -75,5 +77,43 @@ public class OrganizationService {
         }
 
         return orgVo;
+    }
+
+    public R saveOrg(OrganizationVo orgVo) {
+        if(null == orgVo){
+            return R.failure("参数校验失败，请刷新页面重新提交！");
+        }
+        Organization org = new Organization();
+        Date currDate = new Date();
+        org.setOrgName(orgVo.getOrgName());
+        org.setShortName(orgVo.getShortName());
+        org.setRemark(orgVo.getRemark());
+        org.setSortNo(orgVo.getSortNo());
+        org.setEnable(orgVo.getEnable());
+        if(orgVo.getParentId() != null){
+            Organization parentOrg = this.organizationDao.findById(orgVo.getParentId()).get();
+            org.setParent(parentOrg);
+        }else {
+            org.setParent(null);
+        }
+        org.setType(orgVo.getType());
+        org.setDeleted(false);
+        org.setCreateTime(currDate);
+        org.setUpdateTime(currDate);
+        this.organizationDao.save(org);
+
+        return R.success();
+    }
+
+    public R disableOrg(Long orgId) {
+        Organization org = this.organizationDao.findById(orgId).get();
+        org.setEnable(false);
+        return R.success();
+    }
+
+    public R enableOrg(Long orgId) {
+        Organization org = this.organizationDao.findById(orgId).get();
+        org.setEnable(true);
+        return R.success();
     }
 }

@@ -7,36 +7,39 @@
 <body>
 <div class="content-wrapper">
     <section class="container-fluid">
-        <form action="/save" method="post" id="addOrg_form">
+        <form action="/sys/org/save" method="post" id="addOrgForm" name="addOrgForm">
+            <#if _csrf?? && _csrf.parameterName??>
+            <input type="hidden" name="${_csrf.parameterName?default('_csrf')}" value="${_csrf.token?default('')}"/>
+            </#if>
             <table class="form">
                 <tr>
                     <td class="formTitle"><span style="color:red">*&nbsp;</span>机构名称</td>
                     <td class="formValue">
-                        <input name="orgName" type="text" class="form-control" placeholder="机构名称" value="">
+                        <input id="orgName" name="orgName" type="text" class="form-control" placeholder="机构名称" value="">
                     </td>
                 </tr>
                 <tr>
                     <td class="formTitle"><span style="color:red;">*&nbsp;</span>机构简称</td>
                     <td class="formValue">
-                        <input name="shortName" type="text" class="form-control" placeholder="机构简称" value="">
+                        <input id="shortName" name="shortName" type="text" class="form-control" placeholder="机构简称" value="">
                     </td>
                 </tr>
                 <tr>
                     <td class="formTitle">备注信息</td>
                     <td class="formValue">
-                        <input name="remark" type="text" class="form-control" placeholder="备注信息" value="">
+                        <input id="remark" name="remark" type="text" class="form-control" placeholder="备注信息" value="">
                     </td>
                 </tr>
                 <tr>
                     <td class="formTitle">排序号</td>
                     <td class="formValue">
-                        <input name="sortNo" type="text" class="form-control" placeholder="排序号" value="">
+                        <input id="sortNo" name="sortNo" type="text" class="form-control" placeholder="排序号" value="">
                     </td>
                 </tr>
                 <tr>
                     <td class="formTitle">状态</td>
                     <td class="formValue">
-                        <input name="status" type="checkbox" checked />
+                        <input id="enable" name="enable" type="checkbox" checked />
                     </td>
                 </tr>
             </table>

@@ -24,8 +24,8 @@ public class Organization {
     @JoinColumn(name = "parent_id")
     private Organization parent;
     /* 组织名称 */
-    @Column(name = "name")
-    private String name;
+    @Column(name = "org_name")
+    private String orgName;
     /* 组织简称 */
     @Column(name = "short_name")
     private String shortName;
@@ -72,12 +72,12 @@ public class Organization {
         this.parent = parent;
     }
 
-    public String getName() {
-        return name;
+    public String getOrgName() {
+        return orgName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setOrgName(String orgName) {
+        this.orgName = orgName;
     }
 
     public String getShortName() {

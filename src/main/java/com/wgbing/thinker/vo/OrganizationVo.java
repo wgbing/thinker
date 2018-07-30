@@ -6,7 +6,7 @@ public class OrganizationVo {
     /* 父级组织Id */
     private Long parentId;
     /* 组织名称 */
-    private String name;
+    private String orgName;
     /* 组织简称 */
     private String shortName;
     /* 备注 */
@@ -40,12 +40,12 @@ public class OrganizationVo {
         this.parentId = parentId;
     }
 
-    public String getName() {
-        return name;
+    public String getOrgName() {
+        return orgName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setOrgName(String orgName) {
+        this.orgName = orgName;
     }
 
     public String getShortName() {
