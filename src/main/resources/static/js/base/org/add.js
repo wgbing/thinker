@@ -11,17 +11,15 @@ $(function () {
         offColor:"danger",
         size:"mini",
         onSwitchChange:function(event,state){
-            // if(state==true){
-            //     $(this).val("1");
-            // }else{
-            //     $(this).val("2");
-            // }
+            if(state==true){
+                $(this).val("true");
+            }else{
+                $(this).val("false");
+                $(this).prop("checked",true);
+            }
         }
     });
     //表单校验
-    $.validator.setDefaults({
-        debug: true
-    });
     var _form = $("#addOrgForm");
     _form.validate({
         rules: {
@@ -32,12 +30,7 @@ $(function () {
             shortName: {
                 required: true,
                 maxlength: 200
-            },
-            remark: {
-                required: true,
-                maxlength: 200
-            },
-            sortNo: "required"
+            }
         },
         messages: {
             orgName: {
@@ -47,12 +40,7 @@ $(function () {
             shortName: {
                 required: "请输入机构简称",
                 maxlength: "机构简称不能超过200个字符"
-            },
-            remark: {
-                required: "请输入机构备注",
-                maxlength: "机构备注不能超过200个字符"
-            },
-            sortNo: "请输入排序号"
+            }
         }
     });
     //确定
@@ -62,20 +50,19 @@ $(function () {
         }
         bootboxConfirm("确认要提交吗？", function(result) {
             if (result) {
-                console.log("新增机构！");
-                var formData = _form.serialize();
-                console.log(formData);
-                var loading = dialogLoading(true);
                 $.ajax({
                     url: "/sys/org/save",
-                    data: formData,
+                    data: _form.serialize(),
                     type: "POST",
                     dataType: "json",
+                    beforeSend : function() {
+                        dialogLoading(true);
+                    },
                     complete: function (xhr) {
                         dialogLoading(false);
                     },
                     success: function (data) {
-                        if (data.code === 0) {
+                        if (data.success) {
                             // 调用父窗口方法完成操作
                             parent.operationCompleted(data);
                         } else {

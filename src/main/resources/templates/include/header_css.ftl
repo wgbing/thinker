@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="/css/animate.css">
     <!-- BootStrap 开关组件 -->
     <link rel="stylesheet" href="/plugins/bootstrap-switch/bootstrap-switch.css">
+    <!-- Jquery-spinner 自增器组件 -->
+    <link rel="stylesheet" href="/plugins/jquery-spinner/bootstrap-spinner.css">
     <!-- bootstrap-validator -->
     <#--<link rel="stylesheet" href="/plugins/bootstrap-validator/bootstrapValidator.min.css">-->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

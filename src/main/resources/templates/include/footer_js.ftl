@@ -21,6 +21,8 @@
 <script src="/plugins/treegrid/tree.table.js"></script>
 <!-- BootStrap 开关组件 -->
 <script src="/plugins/bootstrap-switch/bootstrap-switch.js"></script>
+<!-- Jquery-spinner 自增器组件 -->
+<script src="/plugins/jquery-spinner/jquery.spinner.js"></script>
 <!-- bootstrap-validator -->
 <#--<script src="/plugins/bootstrap-validator/bootstrapValidator.min.js"></script>-->
 <!-- jQueryValidate -->

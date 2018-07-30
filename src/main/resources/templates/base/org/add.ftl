@@ -7,7 +7,7 @@
 <body>
 <div class="content-wrapper">
     <section class="container-fluid">
-        <form action="/sys/org/save" method="post" id="addOrgForm" name="addOrgForm">
+        <form method="post" id="addOrgForm">
             <#if _csrf?? && _csrf.parameterName??>
             <input type="hidden" name="${_csrf.parameterName?default('_csrf')}" value="${_csrf.token?default('')}"/>
             </#if>
@@ -15,31 +15,37 @@
                 <tr>
                     <td class="formTitle"><span style="color:red">*&nbsp;</span>机构名称</td>
                     <td class="formValue">
-                        <input id="orgName" name="orgName" type="text" class="form-control" placeholder="机构名称" value="">
+                        <input name="orgName" type="text" class="form-control" placeholder="机构名称" value="">
                     </td>
                 </tr>
                 <tr>
                     <td class="formTitle"><span style="color:red;">*&nbsp;</span>机构简称</td>
                     <td class="formValue">
-                        <input id="shortName" name="shortName" type="text" class="form-control" placeholder="机构简称" value="">
+                        <input name="shortName" type="text" class="form-control" placeholder="机构简称" value="">
                     </td>
                 </tr>
                 <tr>
                     <td class="formTitle">备注信息</td>
                     <td class="formValue">
-                        <input id="remark" name="remark" type="text" class="form-control" placeholder="备注信息" value="">
+                        <input name="remark" type="text" class="form-control" placeholder="备注信息" value="">
                     </td>
                 </tr>
                 <tr>
                     <td class="formTitle">排序号</td>
                     <td class="formValue">
-                        <input id="sortNo" name="sortNo" type="text" class="form-control" placeholder="排序号" value="">
+                        <div class="input-group spinner" data-trigger="spinner">
+                            <input name="sortNo" type="text" class="form-control text-center" value="1" data-rule="quantity">
+                            <span class="input-group-addon">
+                                <a href="javascript:void(0);" class="spin-up" data-spin="up"><i class="fa fa-caret-up"></i></a>
+                                <a href="javascript:void(0);" class="spin-down" data-spin="down"><i class="fa fa-caret-down"></i></a>
+                            </span>
+                        </div>
                     </td>
                 </tr>
                 <tr>
                     <td class="formTitle">状态</td>
                     <td class="formValue">
-                        <input id="enable" name="enable" type="checkbox" checked />
+                        <input name="enable" type="checkbox" value="true" checked/>
                     </td>
                 </tr>
             </table>

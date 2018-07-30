@@ -112,7 +112,7 @@ TreeGrid.initColumn = function () {
         {title: '操作', align: 'center', valign: 'middle', width: '300px',
             formatter: function(item, index){
                 var actions = [];
-                actions.push('<a href="javascript:void(0)" onclick="edit('+item.id+')" class="btnList animated pulse" title="编辑机构"><i class="fa fa-pencil"></i></a>&nbsp;');
+                actions.push('<a href="javascript:void(0);" onclick="edit('+item.id+')" class="btnList animated pulse" title="编辑机构"><i class="fa fa-pencil"></i></a>&nbsp;');
                 if (item.enable){
                     actions.push('<a href="/sys/org/disable?orgId='+item.id+'" class="btnList" title="停用机构" data-confirm="确认要停用该机构吗？">' +
                         '<i class="glyphicon glyphicon-ban-circle"></i></a>&nbsp;');
