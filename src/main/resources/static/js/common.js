@@ -67,3 +67,22 @@ dialogClose = function() {
     var index = parent.layer.getFrameIndex(window.name);
     parent.layer.close(index);
 }
+
+function bootboxConfirm(message, callback) {
+    bootbox.confirm({
+        title: "提示信息",
+        message: message,
+        buttons: {
+            confirm: {
+                label: '确&nbsp;&nbsp;认',
+                className: 'btn-success'
+            },
+            cancel: {
+                label: '取&nbsp;&nbsp;消',
+                className: 'btn-danger'
+            }
+        },
+        backdrop: true,
+        callback: callback
+    });
+}

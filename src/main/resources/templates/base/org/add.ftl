@@ -12,25 +12,25 @@
                 <tr>
                     <td class="formTitle"><span style="color:red">*&nbsp;</span>机构名称</td>
                     <td class="formValue">
-                        <input name="orgName" type="text" class="form-control" placeholder="机构名称">
+                        <input name="orgName" type="text" class="form-control" placeholder="机构名称" value="">
                     </td>
                 </tr>
                 <tr>
                     <td class="formTitle"><span style="color:red;">*&nbsp;</span>机构简称</td>
                     <td class="formValue">
-                        <input name="shortName" type="text" class="form-control" placeholder="机构简称">
+                        <input name="shortName" type="text" class="form-control" placeholder="机构简称" value="">
                     </td>
                 </tr>
                 <tr>
                     <td class="formTitle">备注信息</td>
                     <td class="formValue">
-                        <input name="remark" type="text" class="form-control" placeholder="备注信息">
+                        <input name="remark" type="text" class="form-control" placeholder="备注信息" value="">
                     </td>
                 </tr>
                 <tr>
                     <td class="formTitle">排序号</td>
                     <td class="formValue">
-                        <input name="sortNo" type="text" class="form-control" placeholder="排序号">
+                        <input name="sortNo" type="text" class="form-control" placeholder="排序号" value="">
                     </td>
                 </tr>
                 <tr>

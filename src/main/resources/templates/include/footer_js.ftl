@@ -10,6 +10,8 @@
 <script src="/plugins/adminlte/dist/js/adminlte.min.js"></script>
 <!-- layer -->
 <script src="/plugins/layer/layer.js"></script>
+<!-- bootbox -->
+<script src="/plugins/bootbox/bootbox.min.js"></script>
 <!-- Tree Grid-->
 <script src="/plugins/treegrid/jquery.treegrid.min.js"></script>
 <script src="/plugins/treegrid/jquery.treegrid.bootstrap3.js"></script>
@@ -19,6 +21,9 @@
 <script src="/plugins/bootstrap-switch/bootstrap-switch.js"></script>
 <!-- bootstrap-validator -->
 <#--<script src="/plugins/bootstrap-validator/bootstrapValidator.min.js"></script>-->
+<!-- jQueryValidate -->
+<script src="/plugins/jquery-validation/jquery.validate.min.js"></script>
+<script src="/plugins/jquery-validation/messages_zh.js"></script>
 <!-- 表单数据验证插件-->
 <script src="/plugins/validator/validator.js"></script>
 <!-- 自定义通用数据 -->
