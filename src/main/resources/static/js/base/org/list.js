@@ -114,10 +114,10 @@ TreeGrid.initColumn = function () {
                 var actions = [];
                 actions.push('<a href="javascript:void(0);" onclick="edit('+item.id+')" class="btnList animated pulse" title="编辑机构"><i class="fa fa-pencil"></i></a>&nbsp;');
                 if (item.enable){
-                    actions.push('<a href="/sys/org/disable?orgId='+item.id+'" class="btnList" title="停用机构" data-confirm="确认要停用该机构吗？">' +
+                    actions.push('<a href="javascript:void(0);" onclick="disableOrg('+item.id+')" class="btnList" title="停用机构" data-confirm="确认要停用该机构吗？">' +
                         '<i class="glyphicon glyphicon-ban-circle"></i></a>&nbsp;');
                 }else{
-                    actions.push('<a href="/sys/org/enable?orgId='+item.id+'" class="btnList" title="启用机构" data-confirm="确认要启用该机构吗">' +
+                    actions.push('<a href="javascript:void(0);" onclick="enableOrg('+item.id+')" class="btnList" title="启用机构" data-confirm="确认要启用该机构吗">' +
                         '<i class="glyphicon glyphicon-ok-circle"></i></a>&nbsp;');
                 }
 
@@ -141,6 +141,52 @@ function edit(orgId){
         maxmin: true, //开启最大化最小化按钮
         area: ['500px', '327px'],
         content: '/sys/org/edit?orgId='+orgId
+    });
+}
+
+function disableOrg(orgId){
+    bootboxConfirm("确认要禁用该机构吗？", function(result) {
+        if (result) {
+            $.ajax({
+                url: "/sys/org/disable",
+                data:{
+                    orgId:orgId
+                },
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    if (data.success) {
+                        refreshTree();
+                    } else {
+                        toastr.error(data.message, "提示信息");
+                    }
+                },
+                error: ajaxErrorHandler
+            });
+        }
+    });
+}
+
+function enableOrg(orgId){
+    bootboxConfirm("确认要启用该机构吗？", function(result) {
+        if (result) {
+            $.ajax({
+                url: "/sys/org/enable",
+                data:{
+                    orgId:orgId
+                },
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    if (data.success) {
+                        refreshTree();
+                    } else {
+                        toastr.error(data.message, "提示信息");
+                    }
+                },
+                error: ajaxErrorHandler
+            });
+        }
     });
 }
 

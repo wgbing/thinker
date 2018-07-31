@@ -32,17 +32,6 @@
                     <input type="text" class="form-control" placeholder="排序号">
                 </td>
             </tr>
-            <#--<tr>-->
-                <#--<td class="formTitle">状态</td>-->
-                <#--<td class="formValue">-->
-                    <#--<label class="radio-inline">-->
-                        <#--<input type="radio" name="status" value="0"/> 禁用-->
-                    <#--</label>-->
-                    <#--<label class="radio-inline">-->
-                        <#--<input type="radio" name="status" value="1"/> 正常-->
-                    <#--</label>-->
-                <#--</td>-->
-            <#--</tr>-->
             <tr>
                 <td class="formTitle">状态</td>
                 <td class="formValue">
