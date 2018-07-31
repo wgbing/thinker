@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * TODO: 用户组织机构控制层
@@ -49,9 +50,12 @@ public class OrganizationController {
      * TODO: 新增机构
      * @author wgbing
      * @date 2018/7/27 16:01
+     * @param orgId 父级机构Id
      */
     @GetMapping("/add")
-    public String add(){
+    public String add(@RequestParam(value = "orgId",required = false) Long orgId,
+                      Map<String,Object> map){
+        map.put("parentId",orgId);
         return "/base/org/add";
     }
 
@@ -83,6 +87,7 @@ public class OrganizationController {
      * @date 2018/7/30 14:56
      * @param orgId 机构Id
      */
+    @ResponseBody
     @GetMapping("/disable")
     public R disable(@RequestParam(value = "orgId",required = true) Long orgId){
         return organizationService.disableOrg(orgId);
@@ -94,8 +99,21 @@ public class OrganizationController {
      * @date 2018/7/30 14:56
      * @param orgId 机构Id
      */
+    @ResponseBody
     @GetMapping("/enable")
     public R enable(@RequestParam(value = "orgId",required = true) Long orgId){
         return organizationService.enableOrg(orgId);
+    }
+
+    /**
+     * TODO: 删除机构
+     * @author wgbing
+     * @date 2018/7/30 14:56
+     * @param orgId 机构Id
+     */
+    @ResponseBody
+    @GetMapping("/delete")
+    public R delete(@RequestParam(value = "orgId",required = true) Long orgId){
+        return organizationService.deleteOrg(orgId);
     }
 }

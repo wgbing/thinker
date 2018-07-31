@@ -116,4 +116,9 @@ public class OrganizationService {
         org.setEnable(true);
         return R.success();
     }
+
+    public R deleteOrg(Long orgId) {
+        this.organizationDao.deleteById(orgId);
+        return R.success();
+    }
 }

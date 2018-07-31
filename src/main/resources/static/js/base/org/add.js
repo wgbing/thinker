@@ -3,6 +3,12 @@
  */
 
 $(function () {
+    //禁用下拉组件
+    var parentId = $("#parentId").val();
+    if(parentId == null || parentId == ""){
+        $("#type").attr("disabled","disabled");
+    }
+
     //开关组件初始化
     $('[name="enable"]').bootstrapSwitch({
         onText:"正常",
@@ -48,6 +54,8 @@ $(function () {
         if(!_form.valid()){
             return;
         }
+        $("#type").removeAttr("disabled");
+
         bootboxConfirm("确认要提交吗？", function(result) {
             if (result) {
                 $.ajax({

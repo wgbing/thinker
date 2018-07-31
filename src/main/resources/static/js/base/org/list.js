@@ -121,9 +121,9 @@ TreeGrid.initColumn = function () {
                         '<i class="glyphicon glyphicon-ok-circle"></i></a>&nbsp;');
                 }
 
-                actions.push('<a href="/sys/org/delete?orgId='+item.id+'" class="btnList" title="删除机构" data-confirm="确认要删除该机构及所有子机构吗？" data-deltreenode="'+item.id+'">' +
+                actions.push('<a href="javascript:void(0);" onclick="deleteOrg('+item.id+')" class="btnList" title="删除机构" data-confirm="确认要删除该机构及所有子机构吗？" data-deltreenode="'+item.id+'">' +
                     '<i class="fa fa-trash-o"></i></a>&nbsp;');
-                actions.push('<a href="/sys/org/form?parentCode='+item.id+'" class="btnList" title="新增下级机构">' +
+                actions.push('<a href="javascript:void(0);" onclick="addChildOrg('+item.id+')" class="btnList" title="新增下级机构">' +
                     '<i class="fa fa-plus-square"></i></a>&nbsp;');
                 return actions.join('');
 
@@ -145,7 +145,7 @@ function edit(orgId){
 }
 
 function disableOrg(orgId){
-    bootboxConfirm("确认要禁用该机构吗？", function(result) {
+    bootboxConfirm("确定要禁用该机构吗？", function(result) {
         if (result) {
             $.ajax({
                 url: "/sys/org/disable",
@@ -168,7 +168,7 @@ function disableOrg(orgId){
 }
 
 function enableOrg(orgId){
-    bootboxConfirm("确认要启用该机构吗？", function(result) {
+    bootboxConfirm("确定要启用该机构吗？", function(result) {
         if (result) {
             $.ajax({
                 url: "/sys/org/enable",
@@ -187,6 +187,42 @@ function enableOrg(orgId){
                 error: ajaxErrorHandler
             });
         }
+    });
+}
+
+function deleteOrg(orgId) {
+    bootboxConfirm("确定要删除该机构吗？", function(result) {
+        if (result) {
+            $.ajax({
+                url: "/sys/org/delete",
+                data:{
+                    orgId:orgId
+                },
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    if (data.success) {
+                        refreshTree();
+                    } else {
+                        toastr.error(data.message, "提示信息");
+                    }
+                },
+                error: ajaxErrorHandler
+            });
+        }
+    });
+}
+
+//新增根机构
+function addChildOrg(orgId) {
+    layer.open({
+        type: 2,
+        title: '新增下级机构',
+        shadeClose: true,
+        shade: 0.1,
+        maxmin: true, //开启最大化最小化按钮
+        area: ['500px', '371px'],
+        content: '/sys/org/add?orgId='+orgId
     });
 }
 
@@ -213,15 +249,15 @@ function collapseTreeNode() {
     TreeGrid.table.setExpandAll(false);
     TreeGrid.table.refresh();
 }
-//新增
-function addOrg() {
+//新增根机构
+function addRootOrg() {
     layer.open({
         type: 2,
         title: '新增机构',
         shadeClose: true,
         shade: 0.1,
         maxmin: true, //开启最大化最小化按钮
-        area: ['500px', '327px'],
+        area: ['500px', '371px'],
         content: '/sys/org/add'
     });
 }

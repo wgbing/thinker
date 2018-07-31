@@ -11,6 +11,7 @@
             <#if _csrf?? && _csrf.parameterName??>
             <input type="hidden" name="${_csrf.parameterName?default('_csrf')}" value="${_csrf.token?default('')}"/>
             </#if>
+            <input type="hidden" id="parentId" name="parentId" value="${parentId?default('')}"/>
             <table class="form">
                 <tr>
                     <td class="formTitle"><span style="color:red">*&nbsp;</span>机构名称</td>
@@ -22,6 +23,16 @@
                     <td class="formTitle"><span style="color:red;">*&nbsp;</span>机构简称</td>
                     <td class="formValue">
                         <input name="shortName" type="text" class="form-control" placeholder="机构简称" value="">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="formTitle"><span style="color:red;">*&nbsp;</span>机构类型</td>
+                    <td class="formValue">
+                        <select id="type" name="type" class="form-control">
+                            <option value="1" selected>一级组织</option>
+                            <option value="2">二级组织</option>
+                            <option value="3">三级组织</option>
+                        </select>
                     </td>
                 </tr>
                 <tr>
