@@ -361,8 +361,18 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper" style="min-height:1px; height:1px;">
-      <iframe id="right-iframe" name="right-iframe" src="/main" width="100%" height="100%" frameborder="0"></iframe>
+  <#--<div class="content-wrapper" style="min-height:1px; height:1px;">-->
+      <#--<iframe id="right-iframe" name="right-iframe" src="/main" width="100%" height="100%" frameborder="0"></iframe>-->
+  <#--</div>-->
+  <#--<div class="content-wrapper">-->
+      <#--<div class="embed-responsive embed-responsive-16by9">-->
+          <#--<iframe id="right-iframe" name="right-iframe" src="/main" class="embed-responsive-item"></iframe>-->
+      <#--</div>-->
+  <#--</div>-->
+  <div class="content-wrapper">
+      <iframe id="right-iframe" name="right-iframe" src="/main" scrolling="yes"
+              style="width: 100%; min-height: 200px; overflow: visible;">
+      </iframe>
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
