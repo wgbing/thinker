@@ -3,13 +3,14 @@
  */
 
 $(function () {
-	initialPage();
+    addNavTitle("系统管理","组织管理")
+    initialPage();
 	getGrid();
 });
 
 function initialPage() {
 	$(window).resize(function() {
-		TreeGrid.table.resetHeight({height: $(window).height()-100});
+		TreeGrid.table.resetHeight({height: $(window).height()-150});
 	});
 }
 
@@ -21,63 +22,10 @@ function getGrid() {
     table.setCodeField("id");
     table.setParentCodeField("parentId");
     table.setExpandAll(false);
-    table.setHeight($(window).height()-100);
+    table.setHeight($(window).height()-150);
     table.init();
     TreeGrid.table = table;
 }
-
-// var vm = new Vue({
-// 	el:'#dpLTE',
-// 	methods : {
-// 		load: function() {
-// 			TreeGrid.table.refresh();
-// 		},
-// 		save: function() {
-// 			dialogOpen({
-// 				title: '新增机构',
-// 				url: 'base/org/add.html?_' + $.now(),
-// 				width: '500px',
-// 				height: '315px',
-// 				yes : function(iframeId) {
-// 					top.frames[iframeId].vm.acceptClick();
-// 				},
-// 			});
-// 		},
-// 		edit: function() {
-// 			var ck = TreeGrid.table.getSelectedRow();
-// 			if(checkedRow(ck)){
-// 				dialogOpen({
-// 					title: '编辑机构',
-// 					url: 'base/org/edit.html?_' + $.now(),
-// 					width: '500px',
-// 					height: '315px',
-// 					success: function(iframeId){
-// 						top.frames[iframeId].vm.org.orgId = ck[0].id;
-// 						top.frames[iframeId].vm.setForm();
-// 					},
-// 					yes : function(iframeId) {
-// 						top.frames[iframeId].vm.acceptClick();
-// 					},
-// 				});
-// 			}
-// 		},
-// 		remove: function() {
-// 			var ck = TreeGrid.table.getSelectedRow(), ids = [];
-// 			if(checkedArray(ck)){
-// 				$.each(ck, function(idx, item){
-// 					ids[idx] = item.id;
-// 				});
-// 				$.RemoveForm({
-// 					url: '../../sys/org/remove?_' + $.now(),
-// 			    	param: ids,
-// 			    	success: function(data) {
-// 			    		vm.load();
-// 			    	}
-// 				});
-// 			}
-// 		}
-// 	}
-// })
 
 var TreeGrid = {
     id: "dataGrid",

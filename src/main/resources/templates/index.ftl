@@ -299,7 +299,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">主导航</li>
-        <li class="active treeview">
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-tv"></i> <span>系统管理</span>
             <span class="pull-right-container">
@@ -307,11 +307,11 @@
             </span>
           </a>
           <ul class="treeview-menu">
-              <li class="active"><a href="/index"><i class="fa fa-user"></i> 用户管理</a></li>
+              <li><a href="#"><i class="fa fa-user"></i> 用户管理</a></li>
               <li><a href="/sys/org/index" target="right-iframe"><i class="fa fa-sitemap"></i> 组织管理</a></li>
-              <li><a href="/index" target="_parent"><i class="fa fa-street-view"></i> 角色管理</a></li>
-              <li><a href="/index"><i class="fa fa-key"></i> 角色授权</a></li>
-              <li><a href="/index"><i class="fa fa-book"></i> 字典管理</a></li>
+              <li><a href="#" target="_parent"><i class="fa fa-street-view"></i> 角色管理</a></li>
+              <li><a href="#"><i class="fa fa-key"></i> 角色授权</a></li>
+              <li><a href="#"><i class="fa fa-book"></i> 字典管理</a></li>
 
           </ul>
         </li>
@@ -360,23 +360,17 @@
     <!-- /.sidebar -->
   </aside>
 
-  <!-- Content Wrapper. Contains page content -->
-  <#--<div class="content-wrapper" style="min-height:1px; height:1px;">-->
-      <#--<iframe id="right-iframe" name="right-iframe" src="/main" width="100%" height="100%" frameborder="0"></iframe>-->
-  <#--</div>-->
-
   <!-- 路径导航 -->
   <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
           <ol id="nav_title" class="breadcrumb" style="position: static; float: none;">
               <li>
-                  <a href="#">
+                  <a href="/main" target="right-iframe">
                       <i class="fa fa-home" style="font-size: 20px; position: relative; top: 2px; left: -3px;"></i>
                       &nbsp; 首页
                   </a>
               </li>
-              <li class="active">控制面板</li>
           </ol>
       </section>
       <!-- 主界面 -->

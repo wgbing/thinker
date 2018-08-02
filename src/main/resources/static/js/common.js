@@ -1,4 +1,12 @@
 /**
+ * 动态添加路径导航
+ */
+function addNavTitle(aTitle,bTitle) {
+    var navTitle = $('#nav_title', window.parent.document);
+    navTitle.children("li").not(":first").remove();
+    navTitle.append("<li>"+aTitle+"</li>").append("<li class='active'>"+bTitle+"</li>");
+}
+/**
  * 异步错误处理
  * @param xhr
  * @param textStatus
