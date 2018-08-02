@@ -271,7 +271,7 @@
       </div>
     </nav>
   </header>
-  <!-- Left side column. contains the logo and sidebar -->
+  <!-- 导航菜单 -->
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -364,15 +364,27 @@
   <#--<div class="content-wrapper" style="min-height:1px; height:1px;">-->
       <#--<iframe id="right-iframe" name="right-iframe" src="/main" width="100%" height="100%" frameborder="0"></iframe>-->
   <#--</div>-->
-  <#--<div class="content-wrapper">-->
-      <#--<div class="embed-responsive embed-responsive-16by9">-->
-          <#--<iframe id="right-iframe" name="right-iframe" src="/main" class="embed-responsive-item"></iframe>-->
-      <#--</div>-->
-  <#--</div>-->
+
+  <!-- 路径导航 -->
   <div class="content-wrapper">
-      <iframe id="right-iframe" name="right-iframe" src="/main" scrolling="yes"
-              style="width: 100%; min-height: 200px; overflow: visible;">
-      </iframe>
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+          <ol id="nav_title" class="breadcrumb" style="position: static; float: none;">
+              <li>
+                  <a href="#">
+                      <i class="fa fa-home" style="font-size: 20px; position: relative; top: 2px; left: -3px;"></i>
+                      &nbsp; 首页
+                  </a>
+              </li>
+              <li class="active">控制面板</li>
+          </ol>
+      </section>
+      <!-- 主界面 -->
+      <section class="content" style="background: #fff;">
+          <iframe scrolling="yes" frameborder="0"
+                  style="width: 100%; min-height: 200px; overflow: visible; background: #fff;"
+                  id="right-iframe" name="right-iframe" src="/main"></iframe>
+      </section>
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
@@ -582,5 +594,6 @@
 <#include "include/footer_js.ftl">
 <!-- AdminLTE for demo purposes -->
 <script src="/plugins/adminlte/dist/js/demo.js"></script>
+<script src="/js/index.js"></script>
 </body>
 </html>

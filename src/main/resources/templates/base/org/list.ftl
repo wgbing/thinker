@@ -7,20 +7,20 @@
 <body>
 <div>
 
-  <section class="content-header">
-    <h1>
-      系统管理
-      <small>组织管理</small>
-    </h1>
-    <ol class="breadcrumb">
-      <li><a href="/main"><i class="fa fa-dashboard"></i> 首页</a></li>
-      <li>系统管理</li>
-      <li class="active">组织管理</li>
-    </ol>
-  </section>
+  <#--<section class="content-header">-->
+    <#--<h1>-->
+      <#--系统管理-->
+      <#--<small>组织管理</small>-->
+    <#--</h1>-->
+    <#--<ol class="breadcrumb">-->
+      <#--<li><a href="/main"><i class="fa fa-dashboard"></i> 首页</a></li>-->
+      <#--<li>系统管理</li>-->
+      <#--<li class="active">组织管理</li>-->
+    <#--</ol>-->
+  <#--</section>-->
 
   <!-- Main content -->
-  <section class="content">
+  <#--<section class="content">-->
     <!-- Main row -->
     <div class="row">
         <div class="col-xs-12">
@@ -95,7 +95,7 @@
     </div>
     <!-- /.row (main row) -->
 
-  </section>
+  <#--</section>-->
   <!-- /.content -->
 
 </div>
