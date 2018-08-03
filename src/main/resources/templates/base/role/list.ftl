@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>系统管理 | 组织管理</title>
+    <title>系统管理 | 角色管理</title>
     <#include "../../include/header_css.ftl">
 </head>
 <body>
@@ -10,8 +10,8 @@
         <div class="col-md-6">
             <div class="hidden-xs">
                 <h4>
-                    <i class="fa fa-sitemap" style="font-size: 20px;"></i>
-                    &nbsp; 组织管理
+                    <i class="fa fa-street-view" style="font-size: 20px;"></i>
+                    &nbsp; 角色管理
                 </h4>
             </div>
         </div>
@@ -31,51 +31,48 @@
         <!-- searchForm -->
         <form id="searchForm" name="searchForm" class="form-horizontal" hidden>
             <h5 class="page-header"></h5>
-            <div class="col-sm-3">
+            <div class="col-xs-3">
                 <div class="form-group">
-                    <label class="control-label col-sm-6">机构名称：</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="orgName" name="orgName" placeholder="机构名称">
+                    <label class="control-label col-sm-4" title="">
+                        <span class="required hide">*</span> 文本：<i class="fa icon-question hide"></i></label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col-xs-3">
                 <div class="form-group">
-                    <label class="control-label col-sm-6">机构简称：</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="shortName" name="shortName" placeholder="机构简称">
+                    <label class="control-label col-sm-4" title="">
+                        <span class="required hide">*</span> 文本：<i class="fa icon-question hide"></i></label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col-xs-3">
                 <div class="form-group">
-                    <label class="control-label col-sm-6">状态：</label>
-                    <div class="col-sm-6">
-                        <select class="form-control">
-                            <option value="true">正常</option>
-                            <option value="false">禁用</option>
-                        </select>
+                    <label class="control-label col-sm-4" title="">
+                        <span class="required hide">*</span> 文本：<i class="fa icon-question hide"></i></label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-8">
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-md">查询</button>
-                        <button type="reset" class="btn btn-default btn-md">重置</button>
+            <div class="col-xs-3">
+                <div class="form-group">
+                    <label class="control-label col-sm-4" title="">
+                        <span class="required hide">*</span> 文本：<i class="fa icon-question hide"></i></label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
                     </div>
                 </div>
             </div>
         </form>
         <!-- /.searchForm -->
     </div>
-    <div class="row">
-        <table id="dataGrid"></table>
-    </div>
 </div>
 
 <#include "../../include/footer_js.ftl">
-<script src="/js/base/org/list.js"></script>
+<script src="/js/base/role/list.js"></script>
 </body>
 </html>

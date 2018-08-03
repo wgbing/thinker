@@ -60,19 +60,19 @@ TreeGrid.initColumn = function () {
         {title: '操作', align: 'center', valign: 'middle', width: '100px',
             formatter: function(item, index){
                 var actions = [];
-                actions.push('<a href="javascript:void(0);" onclick="edit('+item.id+')" class="btnList animated pulse" title="编辑机构"><i class="fa fa-pencil" style="color: #69aa46"></i></a>&nbsp;');
+                actions.push('<a href="javascript:void(0);" onclick="edit('+item.id+')" class="btnList" title="编辑机构"><i class="fa fa-pencil animated bounce" style="color: #69aa46"></i></a>&nbsp;');
                 if (item.enable){
                     actions.push('<a href="javascript:void(0);" onclick="disableOrg('+item.id+')" class="btnList" title="停用机构" data-confirm="确认要停用该机构吗？">' +
-                        '<i class="glyphicon glyphicon-ban-circle" style="color: #dd5a43"></i></a>&nbsp;');
+                        '<i class="glyphicon glyphicon-ban-circle animated bounce" style="color: #dd5a43"></i></a>&nbsp;');
                 }else{
                     actions.push('<a href="javascript:void(0);" onclick="enableOrg('+item.id+')" class="btnList" title="启用机构" data-confirm="确认要启用该机构吗">' +
-                        '<i class="glyphicon glyphicon-ok-circle" style="color: green"></i></a>&nbsp;');
+                        '<i class="glyphicon glyphicon-ok-circle animated bounce" style="color: green"></i></a>&nbsp;');
                 }
 
                 actions.push('<a href="javascript:void(0);" onclick="deleteOrg('+item.id+')" class="btnList" title="删除机构" data-confirm="确认要删除该机构及所有子机构吗？" data-deltreenode="'+item.id+'">' +
-                    '<i class="fa fa-trash-o" style="color: #dd5a43"></i></a>&nbsp;');
+                    '<i class="fa fa-trash-o animated bounce" style="color: #dd5a43"></i></a>&nbsp;');
                 actions.push('<a href="javascript:void(0);" onclick="addChildOrg('+item.id+')" class="btnList" title="新增下级机构">' +
-                    '<i class="fa fa-plus-square" style="color: #3c8dbc"></i></a>&nbsp;');
+                    '<i class="fa fa-plus-square animated bounce" style="color: #3c8dbc"></i></a>&nbsp;');
                 return actions.join('');
 
             }
