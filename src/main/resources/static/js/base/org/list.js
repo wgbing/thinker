@@ -39,7 +39,7 @@ var TreeGrid = {
 TreeGrid.initColumn = function () {
     var columns = [
         {title: '机构名称', field: 'orgName', align: 'center', valign: 'middle',width:'250px'},
-        {title: '机构简称', field: 'shortName', align: 'center', valign: 'middle', width: '200px'},
+        {title: '机构简称', field: 'shortName', align: 'center', valign: 'middle'},
         {title: '排序号', field: 'sortNo', align: 'center', valign: 'middle', width: '80px'},
         {title: '机构类型', field: 'type', align: 'center', valign: 'middle', width: '100px',
             formatter: function(item, index){
@@ -47,7 +47,7 @@ TreeGrid.initColumn = function () {
             }
         },
         {title: '更新时间', field: 'updateTime', align: 'center', valign: 'middle', width: '150px'},
-        {title: '备注信息', field: 'remark', align: 'center', valign: 'middle', width: '200px'},
+        {title: '备注信息', field: 'remark', align: 'center', valign: 'middle'},
         {title: '状态', field: 'enable', align: 'center', valign: 'middle', width: '80px',
             formatter: function(item, index){
                 if(item.enable){
@@ -57,7 +57,7 @@ TreeGrid.initColumn = function () {
                 }
             }
         },
-        {title: '操作', align: 'center', valign: 'middle', width: '300px',
+        {title: '操作', align: 'center', valign: 'middle', width: '100px',
             formatter: function(item, index){
                 var actions = [];
                 actions.push('<a href="javascript:void(0);" onclick="edit('+item.id+')" class="btnList animated pulse" title="编辑机构"><i class="fa fa-pencil" style="color: #69aa46"></i></a>&nbsp;');
