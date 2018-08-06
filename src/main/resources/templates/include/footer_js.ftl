@@ -19,6 +19,9 @@
 <script src="/plugins/treegrid/jquery.treegrid.bootstrap3.js"></script>
 <script src="/plugins/treegrid/jquery.treegrid.extension.js"></script>
 <script src="/plugins/treegrid/tree.table.js"></script>
+<!-- bootstrap table-->
+<script src="/plugins/bootstrap-table/bootstrap-table.js"></script>
+<script src="/plugins/bootstrap-table/bootstrap-table-zh-CN.js"></script>
 <!-- BootStrap 开关组件 -->
 <script src="/plugins/bootstrap-switch/bootstrap-switch.js"></script>
 <!-- Jquery-spinner 自增器组件 -->

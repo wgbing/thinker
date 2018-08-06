@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="/plugins/toastr/toastr.min.css">
     <!-- Tree Grid-->
     <link rel="stylesheet" href="/plugins/treegrid/jquery.treegrid.css">
+    <!-- bootstrap table-->
+    <link rel="stylesheet" href="/plugins/bootstrap-table/bootstrap-table.css">
     <!-- 通用样式 -->
     <link rel="stylesheet" href="/css/common.css">
     <!-- jquery-validation error样式 -->
