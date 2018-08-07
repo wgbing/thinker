@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="/plugins/adminlte/dist/css/skins/_all-skins.min.css">
     <!-- toastr -->
     <link rel="stylesheet" href="/plugins/toastr/toastr.min.css">
+    <!--zTree-->
+    <link rel="stylesheet" href="/plugins/zTree/css/metroStyle/metroStyle.css">
     <!-- Tree Grid-->
     <link rel="stylesheet" href="/plugins/treegrid/jquery.treegrid.css">
     <!-- bootstrap table-->

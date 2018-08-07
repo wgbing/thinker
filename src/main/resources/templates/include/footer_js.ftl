@@ -14,6 +14,8 @@
 <script src="/plugins/bootbox/bootbox.min.js"></script>
 <!-- toastr -->
 <script src="/plugins/toastr/toastr.min.js"></script>
+<!--zTree-->
+<script src="/plugins/zTree/jquery.ztree.all.js"></script>
 <!-- Tree Grid-->
 <script src="/plugins/treegrid/jquery.treegrid.min.js"></script>
 <script src="/plugins/treegrid/jquery.treegrid.bootstrap3.js"></script>
