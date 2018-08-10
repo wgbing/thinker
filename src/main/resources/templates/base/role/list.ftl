@@ -17,7 +17,7 @@
                         <button class="btn btn-box-tool"><i class="fa fa-refresh"></i></button>
                     </div>
                 </div>
-                <div class="box-body">
+                <div class="box-body" id="orgTreePanel">
                     <ul id="orgTree" class="ztree"></ul>
                 </div>
             </div>

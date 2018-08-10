@@ -3,6 +3,8 @@ package com.wgbing.thinker.dao;
 import com.wgbing.thinker.domain.Organization;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 /**
  * TODO: 用户组织数据操作层
  * @author wgbing
@@ -10,4 +12,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface OrganizationDao extends JpaRepository<Organization, Long> {
 
+    List<Organization> findAllByParentId(Long parentId);
 }

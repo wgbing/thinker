@@ -116,4 +116,10 @@ public class OrganizationController {
     public R delete(@RequestParam(value = "orgId",required = true) Long orgId){
         return organizationService.deleteOrg(orgId);
     }
+
+    @ResponseBody
+    @GetMapping("/tree")
+    public List<OrganizationVo> createOrgTree(@RequestParam(value = "orgId",required = false) Long parentId){
+        return organizationService.createOrgTree(parentId);
+    }
 }

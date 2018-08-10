@@ -121,4 +121,18 @@ public class OrganizationService {
         this.organizationDao.deleteById(orgId);
         return R.success();
     }
+
+    public List<OrganizationVo> createOrgTree(Long parentId) {
+        List<OrganizationVo> orgTreeList = new ArrayList<>();
+        List<Organization> orgList = this.organizationDao.findAllByParentId(parentId);
+        if(orgList != null && !orgList.isEmpty()){
+            for (Organization org : orgList){
+                OrganizationVo orgVo = new OrganizationVo();
+                orgVo.setId(org.getId());
+                orgVo.setOrgName(org.getOrgName());
+                orgTreeList.add(orgVo);
+            }
+        }
+        return orgTreeList;
+    }
 }
