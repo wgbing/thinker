@@ -7,17 +7,15 @@ $(function () {
     addNavTitle("系统管理","角色管理");
     initialPage();
     createOrgTree();
+    getGrid();
 });
 function initialPage() {
-    $("#orgTreePanel").css('height',$(window).height()-84);
+    $("#orgTreePanel").css('height',$(window).height()-64);
 }
 var setting = {
-    // async: {
-    //     enable: true,
-    //     type: "get",
-    //     url: "/sys/org/tree",
-    //     autoParam: ["orgId"]
-    // },
+    view: {
+        showLine: false
+    },
     data: {
         simpleData: {
             enable: true,
@@ -50,4 +48,37 @@ function createOrgTree(parentId) {
         },
         error: ajaxErrorHandler
     });
+}
+
+function getGrid() {
+    $('#dataGrid').bootstrapTableEx({
+        url : "/sys/role/list",
+        method : "get",
+        height : $(window).height() - 108,
+        // queryParams : function(params) {
+        //     params.name = vm.keyword;
+        //     params.parentCode = vm.parentCode;
+        //     return params;
+        // },
+        pagination : true,
+        columns : [ {
+            checkbox : true
+        }, {
+            field : "name",
+            title : "角色名称",
+            width : "50px"
+        }, {
+            field : "description",
+            title : "角色描述",
+            width : "100px"
+        }, {
+            field : "updateTime",
+            title : "更新时间",
+            width : "100px",
+            sortable: true
+        },{
+            field : "createTime",
+            title : "创建时间"
+        } ]
+    })
 }

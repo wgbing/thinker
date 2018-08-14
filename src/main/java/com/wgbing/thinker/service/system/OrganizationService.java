@@ -124,13 +124,18 @@ public class OrganizationService {
 
     public List<OrganizationVo> createOrgTree(Long parentId) {
         List<OrganizationVo> orgTreeList = new ArrayList<>();
-        List<Organization> orgList = this.organizationDao.findAllByParentId(parentId);
+//        List<Organization> orgList = this.organizationDao.findAllByParentId(parentId);
+        List<Organization> orgList = this.organizationDao.findAll();
         if(orgList != null && !orgList.isEmpty()){
             for (Organization org : orgList){
                 OrganizationVo orgVo = new OrganizationVo();
                 orgVo.setId(org.getId());
                 orgVo.setOrgName(org.getOrgName());
-                orgVo.setParentId(parentId);
+                if(org.getParent() != null){
+                    orgVo.setParentId(org.getParent().getId());
+                }else {
+                    orgVo.setParentId(null);
+                }
                 orgTreeList.add(orgVo);
             }
         }

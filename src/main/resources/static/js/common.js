@@ -162,3 +162,29 @@ function bootboxConfirm(message, callback) {
         callback: callback
     });
 }
+
+$.fn.bootstrapTableEx = function(opt){
+    var defaults = {
+        url: '',
+        dataField: "rows",
+        method: 'post',
+        dataType: 'json',
+        selectItemName: 'id',
+        clickToSelect: true,
+        pagination: true,
+        smartDisplay: false,
+        pageSize: 10,
+        pageList: [10, 20, 30, 40, 50],
+        paginationLoop: false,
+        sidePagination: 'server',
+        queryParamsType : null,
+        columns: []
+    }
+    var option = $.extend({}, defaults, opt);
+    if(!option.pagination){
+        option.responseHandler = function(res) {
+            return res.rows;
+        }
+    }
+    $(this).bootstrapTable(option);
+}
