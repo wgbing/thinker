@@ -130,6 +130,7 @@ public class OrganizationService {
                 OrganizationVo orgVo = new OrganizationVo();
                 orgVo.setId(org.getId());
                 orgVo.setOrgName(org.getOrgName());
+                orgVo.setParentId(parentId);
                 orgTreeList.add(orgVo);
             }
         }

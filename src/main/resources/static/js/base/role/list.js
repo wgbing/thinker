@@ -12,20 +12,21 @@ function initialPage() {
     $("#orgTreePanel").css('height',$(window).height()-84);
 }
 var setting = {
-    async: {
-        enable: true,
-        type: "get",
-        url: "/sys/org/tree",
-        autoParam: ["orgId"]
-    },
+    // async: {
+    //     enable: true,
+    //     type: "get",
+    //     url: "/sys/org/tree",
+    //     autoParam: ["orgId"]
+    // },
     data: {
         simpleData: {
             enable: true,
             idKey: "id",
-            pIdKey: "pId",
-            rootPId: 0
+            pIdKey: "parentId",
+            rootPId: null
         },
         key: {
+            name:"orgName",
             url: "xUrl"
         }
     },

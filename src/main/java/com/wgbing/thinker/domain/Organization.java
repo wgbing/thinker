@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -55,6 +56,11 @@ public class Organization {
     /* 更新时间 */
     @Column(name = "update_time")
     private Date updateTime;
+
+    /* 角色对应的管理员列表 */
+    @JsonIgnore
+    @ManyToMany(mappedBy = "orgs")
+    private Set<Role> roles = new HashSet<>();
 
     public Long getId() {
         return id;

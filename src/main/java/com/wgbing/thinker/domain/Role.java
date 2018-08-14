@@ -43,6 +43,10 @@ public class Role {
     @JsonIgnore
     @ManyToMany(mappedBy = "roles")
     private Set<User> users = new HashSet<>();
+    /* 所属部门 */
+    @ManyToMany
+    @JoinTable(name = "sys_role_org", joinColumns = @JoinColumn(name = "role_id"), inverseJoinColumns = @JoinColumn(name = "org_id"))
+    private Set<Organization> orgs = new HashSet<>();
 
     public Long getId() {
         return id;
