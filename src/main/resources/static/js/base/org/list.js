@@ -187,16 +187,24 @@ function showSearch() {
 function refreshTree() {
     TreeGrid.table.refresh();
 }
-//展开
-function expandTreeNode() {
-    TreeGrid.table.setExpandAll(true);
-    TreeGrid.table.init();
+//展开全部或者折叠全部
+function expandOrCollapseAll() {
+    var isAllExpanded = true;
+    $('#dataGrid').treegrid('getAllNodes').each(function() {
+        if ($(this).treegrid("isCollapsed")) {
+            isAllExpanded = false;
+        }
+    });
+
+    if(isAllExpanded){
+        $('#dataGrid').treegrid('collapseAll');
+        $("#btn_expandOrCollapseAll").html("<i class='fa fa-angle-double-down'></i> 展开");
+    }else{
+        $('#dataGrid').treegrid('expandAll');
+        $("#btn_expandOrCollapseAll").html("<i class='fa fa-angle-double-up'></i> 折叠");
+    }
 }
-//折叠
-function collapseTreeNode() {
-    TreeGrid.table.setExpandAll(false);
-    TreeGrid.table.refresh();
-}
+
 //新增根机构
 function addRootOrg() {
     layer.open({
