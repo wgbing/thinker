@@ -10,7 +10,7 @@ $(function () {
     getGrid();
 });
 function initialPage() {
-    $("#orgTreePanel").css('height',$(window).height()-64);
+    $("#orgTreePanel").css('height',$(window).height()-80);
 }
 var setting = {
     view: {
@@ -54,7 +54,7 @@ function getGrid() {
     $('#dataGrid').bootstrapTableEx({
         url : "/sys/role/list",
         method : "get",
-        height : $(window).height() - 108,
+        height : $(window).height() - 80,
         // queryParams : function(params) {
         //     params.name = vm.keyword;
         //     params.parentCode = vm.parentCode;
@@ -81,4 +81,15 @@ function getGrid() {
             title : "创建时间"
         } ]
     })
+}
+
+//查询
+function showSearch() {
+    if($("#searchForm").is(':visible')){
+        $("#searchForm").hide();
+        $("#btn_search").html($("#btn_search").html().replace("隐藏","查询"));
+    }else {
+        $("#searchForm").show();
+        $("#btn_search").html($("#btn_search").html().replace("查询","隐藏"));
+    }
 }

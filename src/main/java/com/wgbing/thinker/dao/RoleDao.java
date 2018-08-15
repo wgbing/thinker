@@ -1,7 +1,9 @@
 package com.wgbing.thinker.dao;
 
 
+import com.wgbing.thinker.common.Page;
 import com.wgbing.thinker.domain.Role;
+import com.wgbing.thinker.vo.RoleVo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -11,4 +13,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface RoleDao extends JpaRepository<Role, Long> {
 
+    Page<RoleVo> listRole(Page<RoleVo> page);
 }

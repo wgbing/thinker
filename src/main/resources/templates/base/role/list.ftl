@@ -28,58 +28,14 @@
                     <div class="title"><i class="fa fa-street-view" style="font-size: 17px">&nbsp;角色管理</i></div>
                     <div class="box-tools pull-right">
                         <div class="btn-group">
-                            <a href="#" class="btn btn-default" id="btn_search" title="查询" onclick="showSearch()"><i class="fa fa-filter"></i> 查询</a>
-                            <a href="#" class="btn btn-default" id="btn_refreshTree" title="刷新" onclick="refreshTree()"><i class="fa fa-refresh"></i> 刷新</a>
-                            <a href="#" class="btn btn-default" id="btn_expandTreeNode" title="展开" onclick="expandTreeNode()"><i class="fa fa-angle-double-down"></i> 展开</a>
-                            <a href="#" class="btn btn-default" id="btn_collapseTreeNode" title="折叠全部" onclick="collapseTreeNode()"><i class="fa fa-angle-double-up"></i> 折叠</a>
-                            <a href="#" class="btn btn-default" id="btn_addOrg" title="新增机构" onclick="addRootOrg()"><i class="fa fa-plus"></i> 新增</a>
+                            <a href="#" class="btn btn-default" id="btn_refreshTable" title="刷新" onclick="refreshTable()"><i class="fa fa-refresh"></i> 刷新</a>
+                            <a href="#" class="btn btn-default" id="btn_addRole" title="新增" onclick="addRole()"><i class="fa fa-plus"></i> 新增</a>
+                            <a href="#" class="btn btn-default" id="btn_editRole" title="编辑" onclick="editRole()"><i class="fa fa-pencil-square-o"></i> 编辑</a>
+                            <a href="#" class="btn btn-default" id="btn_deleteRole" title="删除" onclick="deleteRole()"><i class="fa fa-trash-o"></i> 删除</a>
                         </div>
                     </div>
                 </div>
                 <div class="box-body">
-                    <div class="row">
-                        <!-- searchForm -->
-                        <form id="searchForm" name="searchForm" class="form-horizontal" hidden>
-                            <h5 class="page-header"></h5>
-                            <div class="col-xs-3">
-                                <div class="form-group">
-                                    <label class="control-label col-sm-4" title="">
-                                        <span class="required hide">*</span> 文本：<i class="fa icon-question hide"></i></label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-3">
-                                <div class="form-group">
-                                    <label class="control-label col-sm-4" title="">
-                                        <span class="required hide">*</span> 文本：<i class="fa icon-question hide"></i></label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-3">
-                                <div class="form-group">
-                                    <label class="control-label col-sm-4" title="">
-                                        <span class="required hide">*</span> 文本：<i class="fa icon-question hide"></i></label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-3">
-                                <div class="form-group">
-                                    <label class="control-label col-sm-4" title="">
-                                        <span class="required hide">*</span> 文本：<i class="fa icon-question hide"></i></label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        <!-- /.searchForm -->
-                    </div>
                     <div class="row">
                         <table id="dataGrid"></table>
                     </div>

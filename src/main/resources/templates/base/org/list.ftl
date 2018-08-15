@@ -30,7 +30,7 @@
     <div class="row">
         <!-- searchForm -->
         <form id="searchForm" name="searchForm" class="form-horizontal" hidden>
-            <h5 class="page-header"></h5>
+            <h6 class="page-header"></h6>
             <div class="col-sm-3">
                 <div class="form-group">
                     <label class="control-label col-sm-6">机构名称：</label>

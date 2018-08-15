@@ -1,160 +1,82 @@
 package com.wgbing.thinker.common;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
- * Mybatis分页参数及查询结果封装. 注意所有序号从1开始
- *
- * @author ZhouChenglin
- * @email yczclcn@163.com
- * @url www.chenlintech.com
- * @date 2017年8月8日 上午11:41:07
+ * TODO: 分页参数及查询结果封装
+ * @author wgbing
+ * @date 2018/8/15 18:29
  */
 public class Page<T> {
-    
-	/**
-     * 页编号 : 第几页
-     */
-    protected int pageNo = 1;
-    /**
-     * 页大小 : 每页的数量
-     */
-    protected int pageSize = 10;
+    /* 页编号 : 第几页 */
+    private Integer pageNumber;
+    /* 页大小 : 每页的数量 */
+    private Integer pageSize;
+    /* 排序字段 */
+    private String sortName;
+    /* 排序方式 asc，desc */
+    private String sortOrder;
+    /* 总条数 */
+    private Integer total;
+    /* DataTable中需要显示的数据 */
+    private List<T> rows;
+    /* 查询条件 */
+    private Map<String, String> paramMap;
 
-    /**
-     * 偏移量 : 第一条数据在表中的位置
-     */
-    protected int offset;
-
-    /**
-     * 限定数 : 每页的数量
-     */
-    protected int limit;
-
-    // --结果 --//
-    /**
-     * 查询结果
-     */
-    protected List<T> rows = new ArrayList<T>();
-
-    /**
-     * 总条数
-     */
-    protected int total;
-
-    /**
-     * 总页数
-     */
-    protected int totalPages;
-
-    /**
-     * 计算偏移量
-     */
-    private void calcOffset() {
-        this.offset = ((pageNo - 1) * pageSize);
+    public Integer getPageNumber() {
+        return pageNumber;
     }
 
-    /**
-     * 计算限定数
-     */
-    private void calcLimit() {
-        this.limit = pageSize;
+    public void setPageNumber(Integer pageNumber) {
+        this.pageNumber = pageNumber;
     }
 
-    public Page() {
-        this.calcOffset();
-        this.calcLimit();
-    }
-
-    public Page(int pageNo, int pageSize) {
-        this.pageNo = pageNo;
-        this.pageSize = pageSize;
-        this.calcOffset();
-        this.calcLimit();
-    }
-    
-    public Page(Query search) {
-        this.pageNo = search.getAsInt("pageNumber");
-        this.pageSize = search.getAsInt("pageSize");
-        this.calcOffset();
-        this.calcLimit();
-    }
-
-    /**
-     * 获得当前页的页号,序号从1开始,默认为1.
-     */
-    public int getPageNo() {
-        return pageNo;
-    }
-
-    /**
-     * 获得每页的记录数量,默认为1.
-     */
-    public int getPageSize() {
+    public Integer getPageSize() {
         return pageSize;
     }
 
-    /**
-     * 根据pageNo和pageSize计算当前页第一条记录在总结果集中的位置,序号从1开始.
-     */
-    public int getFirst() {
-        return ((pageNo - 1) * pageSize) + 1;
+    public void setPageSize(Integer pageSize) {
+        this.pageSize = pageSize;
     }
 
-    /**
-     * 根据pageNo和pageSize计算当前页第一条记录在总结果集中的位置,序号从0开始.
-     */
-    public int getOffset() {
-        return offset;
+    public String getSortName() {
+        return sortName;
     }
 
-    public int getLimit() {
-        return limit;
+    public void setSortName(String sortName) {
+        this.sortName = sortName;
     }
 
-    /**
-     * 取得页内的记录列表.
-     */
+    public String getSortOrder() {
+        return sortOrder;
+    }
+
+    public void setSortOrder(String sortOrder) {
+        this.sortOrder = sortOrder;
+    }
+
+    public Integer getTotal() {
+        return total;
+    }
+
+    public void setTotal(Integer total) {
+        this.total = total;
+    }
+
     public List<T> getRows() {
         return rows;
     }
 
-    /**
-     * 设置页内的记录列表.
-     */
-    public void setRows(final List<T> rows) {
+    public void setRows(List<T> rows) {
         this.rows = rows;
     }
 
-    /**
-     * 取得总记录数, 默认值为-1.
-     */
-    public int getTotal() {
-        return total;
+    public Map<String, String> getParamMap() {
+        return paramMap;
     }
 
-    /**
-     * 设置总记录数.
-     */
-    public void setTotal(final int total) {
-        this.total = total;
-        this.totalPages = this.getTotalPages();
+    public void setParamMap(Map<String, String> paramMap) {
+        this.paramMap = paramMap;
     }
-
-    /**
-     * 根据pageSize与total计算总页数, 默认值为-1.
-     */
-    public int getTotalPages() {
-        if (total < 0) {
-            return -1;
-        }
-        int pages = total / pageSize;
-        return total % pageSize > 0 ? ++pages : pages;
-    }
-
-    public void setTotalPages(int totalPages) {
-        this.totalPages = totalPages;
-    }
-
 }

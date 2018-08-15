@@ -7,6 +7,11 @@ $(function () {
     initialPage();
 	getGrid();
 });
+var TreeGrid = {
+    id: "dataGrid",
+    table: null,
+    layerIndex: -1
+};
 
 function initialPage() {
 	$(window).resize(function() {
@@ -26,12 +31,6 @@ function getGrid() {
     table.init();
     TreeGrid.table = table;
 }
-
-var TreeGrid = {
-    id: "dataGrid",
-    table: null,
-    layerIndex: -1
-};
 
 /**
  * 初始化表格的列
@@ -191,6 +190,7 @@ function refreshTree() {
 //展开
 function expandTreeNode() {
     TreeGrid.table.setExpandAll(true);
+    TreeGrid.table.init();
 }
 //折叠
 function collapseTreeNode() {

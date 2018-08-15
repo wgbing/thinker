@@ -1,6 +1,6 @@
 package com.wgbing.thinker.common;
 /**
- * TODO: 页面响应
+ * TODO: 页面响应封装
  * @author wgbing
  * @date 2018/7/30 10:43
  */

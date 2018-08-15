@@ -170,8 +170,9 @@ $.fn.bootstrapTableEx = function(opt){
         method: 'post',
         dataType: 'json',
         selectItemName: 'id',
-        clickToSelect: true,
-        pagination: true,
+        clickToSelect: true,    //是否启用点击选中行
+        pagination: true,       //是否显示分页
+        striped: true,          //是否显示行间隔色
         smartDisplay: false,
         pageSize: 10,
         pageList: [10, 20, 30, 40, 50],
@@ -179,7 +180,7 @@ $.fn.bootstrapTableEx = function(opt){
         sidePagination: 'server',
         queryParamsType : null,
         columns: []
-    }
+    };
     var option = $.extend({}, defaults, opt);
     if(!option.pagination){
         option.responseHandler = function(res) {
