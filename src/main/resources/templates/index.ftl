@@ -7,7 +7,7 @@
 <body class="hold-transition skin-blue sidebar-mini fixed">
 <div class="wrapper">
 
-  <header class="main-header">
+  <header id="mainHeader" class="main-header">
     <!-- Logo -->
     <a href="/index" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -363,7 +363,7 @@
   <!-- 路径导航 -->
   <div class="content-wrapper">
       <!-- Content Header (Page header) -->
-      <section class="content-header">
+      <section id="pageHeader" class="content-header">
           <ol id="nav_title" class="breadcrumb" style="position: static; float: none;">
               <li>
                   <a href="/main" target="right-iframe">
@@ -381,8 +381,8 @@
       </section>
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
+  <footer id="mainFooter" class="main-footer hidden-xs">
+    <div class="pull-right">
       <b>Version</b> 1.0.0
     </div>
     <strong>Copyright &copy; 2014-2016 <a href="https://www.baidu.com">Thinker</a>.</strong> All rights

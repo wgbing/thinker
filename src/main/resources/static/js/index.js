@@ -7,7 +7,11 @@ $(function () {
 	// iframe自适应
     $(window).on('resize', function() {
         var $content = $('.content');
-        $content.height($(this).height() - 182);
+        var mainHeaderHeight = $("#mainHeader").outerHeight(true);
+        var pageHeaderHeight = $("#pageHeader").outerHeight(true);
+        var mainFooterHeight =$("#mainFooter").outerHeight(true);
+        var contentOutHeight = $content.outerHeight(true)-$content.height();
+        $content.height($(this).height() - (mainHeaderHeight+pageHeaderHeight+mainFooterHeight+contentOutHeight));
         $content.find('iframe').each(function() {
             $(this).height($content.height());
         });

@@ -7,11 +7,11 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-2 no-padding">
-            <div class="box no-border">
+        <div class="col-md-2">
+            <div class="box box-default no-border">
                 <div class="box-header">
                     <div class="title"><i class="fa fa-sitemap" style="font-size: 17px">&nbsp;组织机构</i></div>
-                    <div class="box-tools pull-right">
+                    <div class="box-tools pull-right hidden-md">
                         <button class="btn btn-box-tool"><i class="fa fa-edit"></i></button>
                         <button class="btn btn-box-tool"><i class="fa fa-chevron-down"></i></button>
                         <button class="btn btn-box-tool"><i class="fa fa-refresh"></i></button>
@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="col-md-10">
-            <div class="box no-border">
+            <div class="box box-default no-border no-margin">
                 <div class="box-header">
                     <div class="title"><i class="fa fa-street-view" style="font-size: 17px">&nbsp;角色管理</i></div>
                     <div class="box-tools pull-right">
