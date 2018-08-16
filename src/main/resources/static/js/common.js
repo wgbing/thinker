@@ -175,7 +175,7 @@ $.fn.bootstrapTableEx = function(opt){
         striped: true,          //是否显示行间隔色
         smartDisplay: false,
         pageSize: 10,
-        pageList: [10, 20, 30, 40, 50],
+        pageList: [5, 10, 20, 30, 40, 50],
         paginationLoop: false,
         sidePagination: 'server',
         queryParamsType : null,

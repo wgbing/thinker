@@ -10,7 +10,13 @@ $(function () {
     getGrid();
 });
 function initialPage() {
-    $("#orgTreePanel").css('height',$(window).height()-80);
+    $("#orgTreePanel").css('height', $(window).height()-54);
+    $(window).resize(function() {
+        $("#orgTreePanel").css('height', $(window).height()-54);
+        $('#dataGrid').bootstrapTable('resetView', {
+            height : $(window).height() - 108
+        });
+    });
 }
 var setting = {
     view: {
@@ -30,7 +36,10 @@ var setting = {
     },
     callback: {
         onClick: function (event,treeId,treeNode) {
-            createOrgTree(treeNode.parentId);
+            var params = {
+                orgId : treeNode.id
+            };
+            $('#dataGrid').bootstrapTable('refresh',params);
         }
     }
 };
@@ -54,12 +63,13 @@ function getGrid() {
     $('#dataGrid').bootstrapTableEx({
         url : "/sys/role/list",
         method : "get",
-        height : $(window).height() - 80,
-        // queryParams : function(params) {
-        //     params.name = vm.keyword;
-        //     params.parentCode = vm.parentCode;
-        //     return params;
-        // },
+        height : $(window).height() - 108,
+        queryParams : function(params) {
+            var temp ={
+                "paramMap[orgId]" : params?null:params.orgId
+            };
+            return temp;
+        },
         pagination : true,
         columns : [ {
             checkbox : true
@@ -81,15 +91,4 @@ function getGrid() {
             title : "创建时间"
         } ]
     })
-}
-
-//查询
-function showSearch() {
-    if($("#searchForm").is(':visible')){
-        $("#searchForm").hide();
-        $("#btn_search").html($("#btn_search").html().replace("隐藏","查询"));
-    }else {
-        $("#searchForm").show();
-        $("#btn_search").html($("#btn_search").html().replace("查询","隐藏"));
-    }
 }
