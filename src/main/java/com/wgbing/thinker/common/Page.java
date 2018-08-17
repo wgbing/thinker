@@ -22,7 +22,7 @@ public class Page<T> {
     /* DataTable中需要显示的数据 */
     private List<T> rows;
     /* 查询条件 */
-    private Map<String, String> paramMap;
+    private Map<String, String> searchMap;
 
     public Integer getPageNumber() {
         return pageNumber;
@@ -72,11 +72,11 @@ public class Page<T> {
         this.rows = rows;
     }
 
-    public Map<String, String> getParamMap() {
-        return paramMap;
+    public Map<String, String> getSearchMap() {
+        return searchMap;
     }
 
-    public void setParamMap(Map<String, String> paramMap) {
-        this.paramMap = paramMap;
+    public void setSearchMap(Map<String, String> searchMap) {
+        this.searchMap = searchMap;
     }
 }

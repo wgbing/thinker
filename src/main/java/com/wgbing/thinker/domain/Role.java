@@ -25,6 +25,9 @@ public class Role {
     /* 角色描述 */
     @Column(name = "description")
     private String description;
+    /* 备注 */
+    @Column(name = "remark")
+    private String remark;
     /* 创建时间 */
     @Column (name = "createTime")
     private Date createTime;
@@ -43,10 +46,10 @@ public class Role {
     @JsonIgnore
     @ManyToMany(mappedBy = "roles")
     private Set<User> users = new HashSet<>();
-    /* 所属部门 */
-    @ManyToMany
-    @JoinTable(name = "sys_role_org", joinColumns = @JoinColumn(name = "role_id"), inverseJoinColumns = @JoinColumn(name = "org_id"))
-    private Set<Organization> orgs = new HashSet<>();
+    /* 所属组织 */
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Organization.class)
+    @JoinColumn(name = "org_id")
+    private Organization organization;
 
     public Long getId() {
         return id;
@@ -70,6 +73,14 @@ public class Role {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
     public Date getCreateTime() {
@@ -110,5 +121,13 @@ public class Role {
 
     public void setUsers(Set<User> users) {
         this.users = users;
+    }
+
+    public Organization getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
     }
 }

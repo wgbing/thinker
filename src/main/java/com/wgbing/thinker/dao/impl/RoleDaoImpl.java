@@ -36,18 +36,21 @@ public class RoleDaoImpl extends BaseDao {
         List<RoleVo> data = new ArrayList<>();                      // 分页数据集
 
         /* 1.组装查询条件 */
-        Map<String, String> paramMap = page.getParamMap();
+        Map<String, String> searchMap = page.getSearchMap();
 
-        if(paramMap != null){
-            if (!StrUtil.isEmpty(paramMap.get("name"))) {
-                condSql.append(" and r.name like '%").append(paramMap.get("name")).append("%' ");
+        if(searchMap != null){
+            if (!StrUtil.isEmpty(searchMap.get("orgId"))) {
+                condSql.append(" and r.organization.id = ").append(searchMap.get("orgId"));
             }
-            if(!StrUtil.isEmpty(paramMap.get("beginTime"))) {
-                String beginTime = paramMap.get("beginTime") + " 00:00:00";
+            if (!StrUtil.isEmpty(searchMap.get("name"))) {
+                condSql.append(" and r.name like '%").append(searchMap.get("name")).append("%' ");
+            }
+            if(!StrUtil.isEmpty(searchMap.get("beginTime"))) {
+                String beginTime = searchMap.get("beginTime") + " 00:00:00";
                 condSql.append(" and r.updateTime >= '").append(beginTime).append("' ");
             }
-            if(!StrUtil.isEmpty(paramMap.get("endTime"))) {
-                String endTime = paramMap.get("endTime") + " 23:59:59";
+            if(!StrUtil.isEmpty(searchMap.get("endTime"))) {
+                String endTime = searchMap.get("endTime") + " 23:59:59";
                 condSql.append(" and r.updateTime <= '").append(endTime).append("' ");
             }
         }

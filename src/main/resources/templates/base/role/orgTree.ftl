@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>角色管理 | 树形机构</title>
+    <#include "../../include/header_css.ftl">
+</head>
+<body>
+<div class="container-fluid">
+    <ul id="orgTree1" class="ztree"></ul>
+</div>
+
+<#include "../../include/footer_js.ftl">
+<script type="text/javascript">
+    $(function () {
+       createOrgTree();
+    });
+    var setting = {
+        view: {
+            showLine: false
+        },
+        data: {
+            simpleData: {
+                enable: true,
+                idKey: "id",
+                pIdKey: "parentId",
+                rootPId: null
+            },
+            key: {
+                name:"orgName",
+                url: "xUrl"
+            }
+        }
+    };
+    var orgTree;
+    function createOrgTree(parentId) {
+        $.ajax({
+            url: "/sys/org/tree",
+            data:{
+                orgId:parentId
+            },
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                orgTree = $.fn.zTree.init($("#orgTree1"), setting, data);
+            },
+            error: ajaxErrorHandler
+        });
+    }
+</script>
+</body>
+</html>

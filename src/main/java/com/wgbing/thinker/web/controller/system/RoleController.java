@@ -31,9 +31,35 @@ public class RoleController {
         return "/base/role/list";
     }
 
+    /**
+     * TODO: 角色列表
+     * @author wgbing
+     * @date 2018/8/17 13:39
+     * @param page 分页参数封装
+     */
     @ResponseBody
     @GetMapping("/list")
     public Page<RoleVo> list(Page<RoleVo> page){
         return roleService.listRole(page);
+    }
+
+    /**
+     * TODO: 新增角色
+     * @author wgbing
+     * @date 2018/8/17 13:41
+     */
+    @GetMapping("/add")
+    public String add(){
+        return "/base/role/add";
+    }
+
+    /**
+     * TODO: 树形机构
+     * @author wgbing
+     * @date 2018/8/17 16:22
+     */
+    @GetMapping("/orgTree")
+    public String orgTree(){
+        return "/base/role/orgTree";
     }
 }

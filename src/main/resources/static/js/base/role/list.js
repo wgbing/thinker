@@ -37,7 +37,9 @@ var setting = {
     callback: {
         onClick: function (event,treeId,treeNode) {
             var params = {
-                orgId : treeNode.id
+                query:{
+                    "searchMap[orgId]" : treeNode.id
+                }
             };
             $('#dataGrid').bootstrapTable('refresh',params);
         }
@@ -64,12 +66,7 @@ function getGrid() {
         url : "/sys/role/list",
         method : "get",
         height : $(window).height() - 108,
-        queryParams : function(params) {
-            var temp ={
-                "paramMap[orgId]" : params?null:params.orgId
-            };
-            return temp;
-        },
+        sortName:"id",//默认排序字段
         pagination : true,
         columns : [ {
             checkbox : true
@@ -91,4 +88,17 @@ function getGrid() {
             title : "创建时间"
         } ]
     })
+}
+
+//新增根机构
+function addRole() {
+    layer.open({
+        type: 2,
+        title: '新增角色',
+        shadeClose: false,//点击弹层外区域关闭
+        shade: 0.1,
+        maxmin: true, //开启最大化最小化按钮
+        area: ['420px', '363px'],
+        content: '/sys/role/add'
+    });
 }

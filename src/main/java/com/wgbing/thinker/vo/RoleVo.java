@@ -7,6 +7,8 @@ public class RoleVo {
     private String name;
     /* 角色描述 */
     private String description;
+    /* 备注 */
+    private String remark;
     /* 创建时间 */
     private String createTime;
     /* 更新时间 */
@@ -36,6 +38,14 @@ public class RoleVo {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
     public String getCreateTime() {

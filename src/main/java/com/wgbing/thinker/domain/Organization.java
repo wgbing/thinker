@@ -57,11 +57,6 @@ public class Organization {
     @Column(name = "update_time")
     private Date updateTime;
 
-    /* 角色对应的管理员列表 */
-    @JsonIgnore
-    @ManyToMany(mappedBy = "orgs")
-    private Set<Role> roles = new HashSet<>();
-
     public Long getId() {
         return id;
     }
