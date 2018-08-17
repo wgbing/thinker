@@ -90,15 +90,20 @@ function getGrid() {
     })
 }
 
-//新增根机构
+//新增角色
 function addRole() {
-    layer.open({
+    parent.layer.open({
         type: 2,
         title: '新增角色',
         shadeClose: false,//点击弹层外区域关闭
         shade: 0.1,
         maxmin: true, //开启最大化最小化按钮
         area: ['420px', '363px'],
-        content: '/sys/role/add'
+        content: '/sys/role/add',
+        btn: ['确定', '取消'],
+        yes: function (index,layero) {
+            var addRoleWin = top[layero.find('iframe')[0]['name']];
+            addRoleWin.save();
+        }
     });
 }

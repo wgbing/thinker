@@ -6,7 +6,7 @@
 </head>
 <body>
 <div class="container-fluid">
-    <ul id="orgTree1" class="ztree"></ul>
+    <ul id="orgTree" class="ztree"></ul>
 </div>
 
 <#include "../../include/footer_js.ftl">
@@ -41,7 +41,7 @@
             type: "GET",
             dataType: "json",
             success: function (data) {
-                orgTree = $.fn.zTree.init($("#orgTree1"), setting, data);
+                orgTree = $.fn.zTree.init($("#orgTree"), setting, data);
             },
             error: ajaxErrorHandler
         });

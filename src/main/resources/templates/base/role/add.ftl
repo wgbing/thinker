@@ -27,7 +27,8 @@
                 <tr>
                     <td class="formTitle"><span style="color:red">*&nbsp;</span>所属机构</td>
                     <td class="formValue">
-                        <input type="text" class="form-control pointer" placeholder="所属机构" onclick="orgTree()" readonly="readonly">
+                        <input id="orgId" name="orgId" type="hidden">
+                        <input id="orgName" name="orgName" type="text" class="form-control pointer" placeholder="所属机构" onclick="selectOrg()" readonly="readonly">
                     </td>
                 </tr>
                 <tr>
@@ -40,11 +41,11 @@
         </form>
     </section>
 
-    <section class="content-footer">
-        <button type="button" id="btn_cancel" class="btn btn-default pull-right">取消</button>
-        <button type="button" id="btn_confirm" class="btn btn-info pull-right">确定</button>
-        <script>document.getElementsByTagName("body")[0].setAttribute("style", "padding-bottom: 54px !important")</script>
-    </section>
+    <#--<section class="content-footer">-->
+        <#--<button type="button" id="btn_cancel" class="btn btn-default pull-right">取消</button>-->
+        <#--<button type="button" id="btn_confirm" class="btn btn-info pull-right">确定</button>-->
+        <#--<script>document.getElementsByTagName("body")[0].setAttribute("style", "padding-bottom: 54px !important")</script>-->
+    <#--</section>-->
 </div>
 
 <#include "../../include/footer_js.ftl">
