@@ -86,7 +86,10 @@ public class RoleDaoImpl extends BaseDao {
                     roleVo.setId(role.getId());
                     roleVo.setName(role.getName());
                     roleVo.setDescription(role.getDescription());
+                    roleVo.setOrgName(role.getOrganization().getOrgName());
+                    roleVo.setOrgId(role.getOrganization().getId());
                     roleVo.setUpdateTime(DateUtil.formatDate(role.getUpdateTime()));
+                    roleVo.setRemark(role.getRemark());
                     data.add(roleVo);
                 }
             }

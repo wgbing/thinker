@@ -189,3 +189,28 @@ $.fn.bootstrapTableEx = function(opt){
     }
     $(this).bootstrapTable(option);
 }
+
+checkedRow = function (id) {
+    var isOK = true;
+    if (id == undefined || id == "" || id == 'null' || id == 'undefined') {
+        isOK = false;
+        dialogMsg('您没有选中任何数据项！');
+    } else if (id.length > 1) {
+        isOK = false;
+        dialogMsg('您只能选择一条数据项！');
+    }
+    return isOK;
+}
+
+tabiframeId = function () {
+    var iframeId = top.$(".thinker_iframe:visible").attr("id");
+    return iframeId;
+}
+
+$.currentIframe = function () {
+    var tabId = tabiframeId();
+    if(isNullOrEmpty(tabId)) {//单页iframe嵌套
+        return $(window.parent.document).contents().find('#right-iframe')[0].contentWindow;
+    }
+    return $(window.parent.document).contents().find('#'+tabiframeId())[0].contentWindow;//多层tab页嵌套
+}

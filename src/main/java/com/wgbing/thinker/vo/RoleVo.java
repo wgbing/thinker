@@ -9,6 +9,10 @@ public class RoleVo {
     private String description;
     /* 备注 */
     private String remark;
+    /* 所属机构ID*/
+    private Long orgId;
+    /* 所属机构名称 */
+    private String orgName;
     /* 创建时间 */
     private String createTime;
     /* 更新时间 */
@@ -46,6 +50,22 @@ public class RoleVo {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public Long getOrgId() {
+        return orgId;
+    }
+
+    public void setOrgId(Long orgId) {
+        this.orgId = orgId;
+    }
+
+    public String getOrgName() {
+        return orgName;
+    }
+
+    public void setOrgName(String orgName) {
+        this.orgName = orgName;
     }
 
     public String getCreateTime() {

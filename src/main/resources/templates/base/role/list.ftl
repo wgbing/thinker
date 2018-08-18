@@ -31,7 +31,7 @@
                         <div class="col-md-7">
                             <div class="btn-toolbar pull-right">
                                 <div class="btn-group">
-                                    <a href="#" class="btn btn-default" id="btn_refreshTable" title="刷新" onclick="reload()"><i class="fa fa-refresh"></i> 刷新</a>
+                                    <a href="#" class="btn btn-default" id="btn_refreshTable" title="刷新" onclick="refreshTable()"><i class="fa fa-refresh"></i> 刷新</a>
                                     <a href="#" class="btn btn-default" id="btn_addRole" title="新增" onclick="addRole()"><i class="fa fa-plus"></i> 新增</a>
                                     <a href="#" class="btn btn-default" id="btn_editRole" title="编辑" onclick="editRole()"><i class="fa fa-pencil-square-o"></i> 编辑</a>
                                     <a href="#" class="btn btn-default" id="btn_deleteRole" title="删除" onclick="deleteRole()"><i class="fa fa-trash-o"></i> 删除</a>

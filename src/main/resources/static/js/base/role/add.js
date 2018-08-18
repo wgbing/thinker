@@ -3,6 +3,7 @@
  * @author wgbing
  * @date 2018/8/17 23:29
  */
+//选择所属机构
 function selectOrg() {
     parent.layer.open({
         type: 2,
@@ -78,8 +79,10 @@ function save() {
                 },
                 success: function (data) {
                     if (data.success) {
-                        // 调用父窗口方法完成操作
-                        parent.operationCompleted(data);
+                        //关闭当前窗口
+                        dialogClose();
+                        //刷新当前表格
+                        $.currentIframe().refreshTable();
                     } else {
                         toastr.error(data.message, "提示信息");
                     }

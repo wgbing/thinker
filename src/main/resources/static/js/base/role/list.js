@@ -70,24 +70,33 @@ function getGrid() {
         pagination : true,
         columns : [ {
             checkbox : true
-        }, {
+        },{
             field : "name",
             title : "角色名称",
             width : "50px"
-        }, {
+        },{
             field : "description",
             title : "角色描述",
             width : "100px"
-        }, {
+        },{
+            field : "orgName",
+            title : "所属机构",
+            width : "150px"
+        },{
             field : "updateTime",
             title : "更新时间",
             width : "100px",
             sortable: true
         },{
-            field : "createTime",
-            title : "创建时间"
+            field : "remark",
+            title : "备注"
         } ]
     })
+}
+
+//刷新
+function refreshTable() {
+    $("#dataGrid").bootstrapTable('refresh');
 }
 
 //新增角色
@@ -98,7 +107,7 @@ function addRole() {
         shadeClose: false,//点击弹层外区域关闭
         shade: 0.1,
         maxmin: true, //开启最大化最小化按钮
-        area: ['420px', '363px'],
+        area: ['420px', '350px'],
         content: '/sys/role/add',
         btn: ['确定', '取消'],
         yes: function (index,layero) {
@@ -106,4 +115,25 @@ function addRole() {
             addRoleWin.save();
         }
     });
+}
+
+//编辑角色
+function editRole() {
+    var ck = $('#dataGrid').bootstrapTable('getSelections');
+    if(checkedRow(ck)){
+        parent.layer.open({
+            type: 2,
+            title: '编辑角色',
+            shadeClose: false,//点击弹层外区域关闭
+            shade: 0.1,
+            maxmin: true, //开启最大化最小化按钮
+            area: ['420px', '350px'],
+            content: '/sys/role/edit?roleId='+ck[0].id,
+            btn: ['确定', '取消'],
+            yes: function (index,layero) {
+                var editRoleWin = top[layero.find('iframe')[0]['name']];
+                editRoleWin.save();
+            }
+        });
+    }
 }

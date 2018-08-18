@@ -1,13 +1,14 @@
 package com.wgbing.thinker.web.controller.system;
 
 import com.wgbing.thinker.common.Page;
+import com.wgbing.thinker.common.R;
 import com.wgbing.thinker.service.system.RoleService;
 import com.wgbing.thinker.vo.RoleVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 /**
  * TODO: 用户角色管理控制层
@@ -62,4 +63,30 @@ public class RoleController {
     public String orgTree(){
         return "/base/role/orgTree";
     }
+
+    /**
+     * TODO: 保存/更新角色
+     * @author wgbing
+     * @date 2018/8/18 10:15
+     * @param roleVo 角色信息
+     */
+    @ResponseBody
+    @PostMapping("/save")
+    public R save(RoleVo roleVo){
+        return roleService.saveRole(roleVo);
+    }
+
+    /**
+     * TODO: 编辑角色
+     * @author wgbing
+     * @date 2018/8/17 13:41
+     */
+    @GetMapping("/edit")
+    public String edit(@RequestParam(value = "roleId",required = true) Long roleId,
+                       Map<String,Object> map){
+        RoleVo roleVo = roleService.findOne(roleId);
+        map.put("role",roleVo);
+        return "/base/role/edit";
+    }
+
 }
