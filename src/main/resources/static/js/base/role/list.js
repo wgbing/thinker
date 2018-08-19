@@ -137,3 +137,32 @@ function editRole() {
         });
     }
 }
+
+function deleteRole() {
+    var ck = $('#dataGrid').bootstrapTable('getSelections');
+    if(checkedArray(ck)){
+        var roleIds;
+        for(var i=0;i<=ck.length;i++){
+            roleIds += ck[i].id+",";
+        }
+        bootboxConfirm("确定要删除所选角色吗？", function(result) {
+            if (result) {
+                $.ajax({
+                    url: "/sys/role/delete",
+                    data:{
+                        roleId:roleIds
+                    },
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.success) {
+                            refreshTable();
+                        } else {
+                            toastr.error(data.message, "提示信息");
+                        }
+                    },
+                    error: ajaxErrorHandler
+                });
+            }
+        });    }
+}

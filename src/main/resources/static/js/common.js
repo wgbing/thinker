@@ -23,6 +23,27 @@ function ajaxErrorHandler(xhr, textStatus, errorThrown) {
     }
 }
 
+/**
+ * toastr配置提示框样式
+ */
+toastr.options = {
+    "closeButton":false,//显示关闭按钮
+    "debug":false,//启用debug
+    "newestOnTop": false,
+    "progressBar": true,
+    "positionClass":"toast-top-center",//弹出的位置
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration":"300",//显示的时间
+    "hideDuration":"1000",//消失的时间
+    "timeOut":"1000",//停留的时间
+    "extendedTimeOut":"1000",//控制时间
+    "showEasing":"swing",//显示时的动画缓冲方式
+    "hideEasing":"linear",//消失时的动画缓冲方式
+    "showMethod":"fadeIn",//显示时的动画方式
+    "hideMethod":"fadeOut"//消失时的动画方式
+};
+
 formatDate = function (v, format) {
     if (!v) return "";
     var d = v;
@@ -198,6 +219,15 @@ checkedRow = function (id) {
     } else if (id.length > 1) {
         isOK = false;
         dialogMsg('您只能选择一条数据项！');
+    }
+    return isOK;
+}
+
+checkedArray = function (id) {
+    var isOK = true;
+    if (id == undefined || id == "" || id == 'null' || id == 'undefined') {
+        isOK = false;
+        dialogMsg('您没有选中任何数据项！');
     }
     return isOK;
 }

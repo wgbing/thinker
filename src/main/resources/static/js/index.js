@@ -16,4 +16,5 @@ $(function () {
             $(this).height($content.height());
         });
     }).resize();
+
 });

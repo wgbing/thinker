@@ -89,4 +89,10 @@ public class RoleController {
         return "/base/role/edit";
     }
 
+    @ResponseBody
+    @GetMapping("/delete")
+    public R delete(@RequestParam(value = "roleIds",required = true) String roleIds){
+        return roleService.deleteRole(roleIds);
+    }
+
 }

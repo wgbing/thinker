@@ -69,4 +69,9 @@ public class RoleService {
         roleVo.setUpdateTime(DateUtil.formatDate(role.getUpdateTime()));
         return roleVo;
     }
+
+    public R deleteRole(String roleIds) {
+        //todo:删除角色逻辑
+        return R.success();
+   }
 }

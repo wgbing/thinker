@@ -14,6 +14,7 @@
     $(function () {
        createOrgTree();
     });
+    var orgTree;
     var setting = {
         view: {
             showLine: false
@@ -31,7 +32,6 @@
             }
         }
     };
-    var orgTree;
     function createOrgTree(parentId) {
         $.ajax({
             url: "/sys/org/tree",
