@@ -307,7 +307,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-user"></i> 用户管理</a></li>
+              <li><a href="/sys/user/index" target="right-iframe"><i class="fa fa-user"></i> 用户管理</a></li>
               <li><a href="/sys/org/index" target="right-iframe"><i class="fa fa-sitemap"></i> 组织管理</a></li>
               <li><a href="/sys/role/index" target="right-iframe"><i class="fa fa-street-view"></i> 角色管理</a></li>
               <li><a href="#"><i class="fa fa-key"></i> 角色授权</a></li>

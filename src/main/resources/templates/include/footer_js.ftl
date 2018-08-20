@@ -33,6 +33,9 @@
 <!-- jQueryValidate -->
 <script src="/plugins/jquery-validation/jquery.validate.min.js"></script>
 <script src="/plugins/jquery-validation/messages_zh.js"></script>
+<!-- Select2 -->
+<script src="/plugins/adminlte/bower_components/select2/dist/js/select2.js"></script>
+<script src="/plugins/adminlte/bower_components/select2/dist/js/i18n/zh-CN.js"></script>
 <!-- 表单数据验证插件-->
 <#--<script src="/plugins/validator/validator.js"></script>-->
 <!-- 自定义通用数据 -->
