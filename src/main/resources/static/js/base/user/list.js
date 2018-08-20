@@ -103,6 +103,15 @@ function refreshTable() {
 
 //新增
 function addUser() {
+    var nodes = orgTree.getSelectedNodes();
+    if(nodes == null || nodes.length <= 0){
+        toastr.warning("请先选择组织机构","提示信息");
+        return;
+    }else if(nodes.length > 1){
+        toastr.warning("组织机构只能选择一个","提示信息");
+        return;
+    }
+
     parent.layer.open({
         type: 2,
         title: '新增用户',
@@ -112,6 +121,11 @@ function addUser() {
         area: ['420px', '650px'],
         content: '/sys/user/add',
         btn: ['确定', '取消'],
+        success: function(layero, index){
+            var addUserWin = top[layero.find('iframe')[0]['name']];
+            addUserWin.$("#orgId").val(nodes[0].id);
+            addUserWin.$("#orgName").val(nodes[0].orgName);
+        },
         yes: function (index,layero) {
             var addUserWin = top[layero.find('iframe')[0]['name']];
             addUserWin.save();

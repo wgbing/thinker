@@ -40,13 +40,13 @@
                             <td class="formTitle"><span style="color:red">*&nbsp;</span>所属机构</td>
                             <td class="formValue">
                                 <input id="orgId" name="orgId" type="hidden">
-                                <input id="orgName" name="orgName" type="text" class="form-control pointer" placeholder="所属机构" onclick="selectOrg()" readonly="readonly">
+                                <input id="orgName" name="orgName" type="text" class="form-control pointer" placeholder="所属机构" readonly="readonly">
                             </td>
                         </tr>
                         <tr>
                             <td class="formTitle"><span style="color:red">*&nbsp;</span>拥有角色</td>
                             <td class="formValue">
-                                <select id="roleSelect2" class="form-control" multiple="multiple" data-placeholder="选择角色">
+                                <select id="roleSelect2" class="form-control" multiple="multiple" data-placeholder="选择角色" style="width: 100%">
                                     <option>Alabama</option>
                                     <option>Alaska</option>
                                     <option>California</option>
