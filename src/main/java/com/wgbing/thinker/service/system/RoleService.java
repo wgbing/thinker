@@ -12,9 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * TODO: 用户角色业务逻辑处理层
@@ -77,17 +75,17 @@ public class RoleService {
         return R.success();
    }
 
-    public R listRoleByOrgId(Long orgId) {
-        List<RoleVo> roleVoList = new ArrayList<>();
+    public List<Map<String,Object>> listRoleByOrgId(Long orgId) {
+        List<Map<String,Object>> resultList = new ArrayList<>();
         List<Role> roleList = roleDao.findAllByOrganization_Id(orgId);
         if(roleList != null && !roleList.isEmpty()){
             for(Role role:roleList){
-                RoleVo roleVo = new RoleVo();
-                roleVo.setId(role.getId());
-                roleVo.setName(role.getName());
-                roleVoList.add(roleVo);
+                Map<String,Object> map = new HashMap<>();
+                map.put("id",role.getId());
+                map.put("text",role.getName());
+                resultList.add(map);
             }
         }
-        return R.success(roleVoList);
+        return resultList;
     }
 }

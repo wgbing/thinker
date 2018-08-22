@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -101,9 +102,15 @@ public class RoleController {
         return roleService.deleteRole(roleIds);
     }
 
+    /**
+     * TODO: 获取组织机构角色
+     * @author wgbing
+     * @date 2018/8/23 上午12:27
+     * @param orgId 组织机构ID
+     */
     @ResponseBody
     @GetMapping("/select")
-    public R listRoleByOrgId(@RequestParam(value = "orgId",required = true) Long orgId){
+    public List<Map<String,Object>> listRoleByOrgId(@RequestParam(value = "orgId",required = true) Long orgId){
         return roleService.listRoleByOrgId(orgId);
     }
 
