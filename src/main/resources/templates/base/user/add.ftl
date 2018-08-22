@@ -47,12 +47,6 @@
                             <td class="formTitle"><span style="color:red">*&nbsp;</span>拥有角色</td>
                             <td class="formValue">
                                 <select id="roleSelect2" class="form-control" multiple="multiple" data-placeholder="选择角色" style="width: 100%">
-                                    <option>Alabama</option>
-                                    <option>Alaska</option>
-                                    <option>California</option>
-                                    <option>California</option>
-                                    <option>California</option>
-                                    <option>California</option>
                                 </select>
                             </td>
                         </tr>

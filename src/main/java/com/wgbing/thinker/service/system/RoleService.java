@@ -12,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * TODO: 用户角色业务逻辑处理层
@@ -74,4 +76,18 @@ public class RoleService {
         //todo:删除角色逻辑
         return R.success();
    }
+
+    public R listRoleByOrgId(Long orgId) {
+        List<RoleVo> roleVoList = new ArrayList<>();
+        List<Role> roleList = roleDao.findAllByOrganization_Id(orgId);
+        if(roleList != null && !roleList.isEmpty()){
+            for(Role role:roleList){
+                RoleVo roleVo = new RoleVo();
+                roleVo.setId(role.getId());
+                roleVo.setName(role.getName());
+                roleVoList.add(roleVo);
+            }
+        }
+        return R.success(roleVoList);
+    }
 }

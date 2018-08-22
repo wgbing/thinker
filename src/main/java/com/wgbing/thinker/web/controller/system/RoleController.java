@@ -89,10 +89,22 @@ public class RoleController {
         return "/base/role/edit";
     }
 
+    /**
+     * TODO: 删除角色
+     * @author wgbing
+     * @date 2018/8/22 17:12
+     * @param roleIds 角色Id集合，用逗号分开
+     */
     @ResponseBody
     @GetMapping("/delete")
     public R delete(@RequestParam(value = "roleIds",required = true) String roleIds){
         return roleService.deleteRole(roleIds);
+    }
+
+    @ResponseBody
+    @GetMapping("/select")
+    public R listRoleByOrgId(@RequestParam(value = "orgId",required = true) Long orgId){
+        return roleService.listRoleByOrgId(orgId);
     }
 
 }
