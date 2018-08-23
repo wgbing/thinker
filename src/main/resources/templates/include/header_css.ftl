@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="/plugins/adminlte/bower_components/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="/plugins/adminlte/bower_components/Ionicons/css/ionicons.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="/plugins/adminlte/bower_components/select2/dist/css/select2.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="/plugins/adminlte/dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -32,8 +34,6 @@
     <link rel="stylesheet" href="/plugins/bootstrap-switch/bootstrap-switch.css">
     <!-- Jquery-spinner 自增器组件 -->
     <link rel="stylesheet" href="/plugins/jquery-spinner/bootstrap-spinner.css">
-    <!-- Select2 -->
-    <link rel="stylesheet" href="/plugins/adminlte/bower_components/select2/dist/css/select2.css">
     <!-- bootstrap-validator -->
     <#--<link rel="stylesheet" href="/plugins/bootstrap-validator/bootstrapValidator.min.css">-->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

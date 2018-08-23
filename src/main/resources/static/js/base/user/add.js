@@ -1,30 +1,64 @@
 $(function () {
-    initPage();
+    $('#roleSelect2').select2();
+    createPermissionTree();
 });
 
-var roleList = [];
-$.ajax({
-    url:"/sys/role/select",
-    type:"get",
-    dataType:"json",
-    contentType:"application/json",
-    data:{
-      orgId:2
-    },
-    success:function(data){
-        console.log("data:",data);
-        roleList = data;
-    },
-    error:function(data){
+function listRole(orgId) {
+    $.ajax({
+        url:"/sys/role/select",
+        type:"get",
+        dataType:"json",
+        contentType:"application/json",
+        data:{
+            orgId:orgId
+        },
+        success:function(data){
+            $('#roleSelect2').select2({
+                data: data,
+                placeholder:'请选择',//默认文字提示
+                language: "zh-CN",//汉化
+                allowClear: true//允许清空
+            });
+        },
+        error:function(data){
 
+        }
+    });
+}
+
+var permissionTree;
+var setting = {
+    view: {
+        showLine: false
+    },
+    check: {
+        enable: true
+    },
+    data: {
+        simpleData: {
+            enable: true,
+            idKey: "id",
+            pIdKey: "parentId",
+            rootPId: -1
+        },
+        key: {
+            url: "xUrl"
+        }
+    },
+    callback: {
+        onClick: function (event,treeId,treeNode) {
+
+        }
     }
-});
-
-function initPage() {
-    $('#roleSelect2').select2({
-        data: roleList,
-        placeholder:'请选择',//默认文字提示
-        language: "zh-CN",//汉化
-        allowClear: true//允许清空
+};
+function createPermissionTree() {
+    $.ajax({
+        url: "/sys/permission/tree",
+        type: "GET",
+        dataType: "json",
+        success: function (data) {
+            permissionTree = $.fn.zTree.init($("#permissionTree"), setting, data);
+        },
+        error: ajaxErrorHandler
     });
 }

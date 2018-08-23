@@ -85,7 +85,9 @@
             </div>
 
             <div class="tab-pane" id="permissionTab">
-
+                <div id="permissionTreePanel">
+                    <ul id="permissionTree" class="ztree"></ul>
+                </div>
             </div>
         </div>
     </div>

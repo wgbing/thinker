@@ -125,6 +125,7 @@ function addUser() {
             var addUserWin = top[layero.find('iframe')[0]['name']];
             addUserWin.$("#orgId").val(nodes[0].id);
             addUserWin.$("#orgName").val(nodes[0].orgName);
+            addUserWin.listRole(nodes[0].id);
         },
         yes: function (index,layero) {
             var addUserWin = top[layero.find('iframe')[0]['name']];
