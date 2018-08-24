@@ -96,11 +96,30 @@ function getGrid() {
 
 //刷新
 function refreshTable() {
-    $("#dataGrid").bootstrapTable('refresh');
+    var nodes = orgTree.getSelectedNodes();
+    if(nodes == null || nodes.length <= 0){
+        $('#dataGrid').bootstrapTable('refresh');
+    }else if(nodes.length >= 1){
+        var params = {
+            query:{
+                "searchMap[orgId]" : nodes[0].id
+            }
+        };
+        $('#dataGrid').bootstrapTable('refresh',params);
+    }
 }
 
 //新增角色
 function addRole() {
+    var nodes = orgTree.getSelectedNodes();
+    if(nodes == null || nodes.length <= 0){
+        toastr.warning("请先选择组织机构","提示信息");
+        return;
+    }else if(nodes.length > 1){
+        toastr.warning("组织机构只能选择一个","提示信息");
+        return;
+    }
+
     parent.layer.open({
         type: 2,
         title: '新增角色',
@@ -110,6 +129,11 @@ function addRole() {
         area: ['420px', '350px'],
         content: '/sys/role/add',
         btn: ['确定', '取消'],
+        success: function(layero, index){
+            var addRoleWin = top[layero.find('iframe')[0]['name']];
+            addRoleWin.$("#orgId").val(nodes[0].id);
+            addRoleWin.$("#orgName").val(nodes[0].orgName);
+        },
         yes: function (index,layero) {
             var addRoleWin = top[layero.find('iframe')[0]['name']];
             addRoleWin.save();
@@ -164,5 +188,6 @@ function deleteRole() {
                     error: ajaxErrorHandler
                 });
             }
-        });    }
+        });
+    }
 }

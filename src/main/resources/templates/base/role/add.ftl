@@ -27,7 +27,7 @@
                 <td class="formTitle"><span style="color:red">*&nbsp;</span>所属机构</td>
                 <td class="formValue">
                     <input id="orgId" name="orgId" type="hidden">
-                    <input id="orgName" name="orgName" type="text" class="form-control pointer" placeholder="所属机构" onclick="selectOrg()" readonly="readonly">
+                    <input id="orgName" name="orgName" type="text" class="form-control pointer" placeholder="所属机构" readonly="readonly">
                 </td>
             </tr>
             <tr>

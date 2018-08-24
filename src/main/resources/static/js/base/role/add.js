@@ -62,7 +62,6 @@ function save() {
     if(!_form.valid()){
         return;
     }
-    $("#type").removeAttr("disabled");
 
     $.ConfirmForm({
         url: "/sys/role/save",
@@ -78,22 +77,4 @@ function save() {
             }
         }
     });
-    // bootboxConfirm("确认要提交吗？", function(result) {
-    //     if (result) {
-    //         $.SaveForm({
-    //             url: "/sys/role/save",
-    //             data: _form.serialize(),
-    //             success: function(data) {
-    //                 if (data.success) {
-    //                     //关闭当前窗口
-    //                     dialogClose();
-    //                     //刷新当前表格
-    //                     $.currentIframe().refreshTable();
-    //                 } else {
-    //                     toastr.error(data.message, "提示信息");
-    //                 }
-    //             }
-    //         });
-    //     }
-    // });
 }
