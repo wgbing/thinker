@@ -64,31 +64,36 @@ function save() {
     }
     $("#type").removeAttr("disabled");
 
-    bootboxConfirm("确认要提交吗？", function(result) {
-        if (result) {
-            $.ajax({
-                url: "/sys/role/save",
-                data: _form.serialize(),
-                type: "POST",
-                dataType: "json",
-                beforeSend : function() {
-                    dialogLoading(true);
-                },
-                complete: function (xhr) {
-                    dialogLoading(false);
-                },
-                success: function (data) {
-                    if (data.success) {
-                        //关闭当前窗口
-                        dialogClose();
-                        //刷新当前表格
-                        $.currentIframe().refreshTable();
-                    } else {
-                        toastr.error(data.message, "提示信息");
-                    }
-                },
-                error: ajaxErrorHandler
-            });
+    $.ConfirmForm({
+        url: "/sys/role/save",
+        data: _form.serialize(),
+        success: function(data) {
+            if (data.success) {
+                //关闭当前窗口
+                dialogClose();
+                //刷新当前表格
+                $.currentIframe().refreshTable();
+            } else {
+                toastr.error(data.message, "提示信息");
+            }
         }
     });
+    // bootboxConfirm("确认要提交吗？", function(result) {
+    //     if (result) {
+    //         $.SaveForm({
+    //             url: "/sys/role/save",
+    //             data: _form.serialize(),
+    //             success: function(data) {
+    //                 if (data.success) {
+    //                     //关闭当前窗口
+    //                     dialogClose();
+    //                     //刷新当前表格
+    //                     $.currentIframe().refreshTable();
+    //                 } else {
+    //                     toastr.error(data.message, "提示信息");
+    //                 }
+    //             }
+    //         });
+    //     }
+    // });
 }

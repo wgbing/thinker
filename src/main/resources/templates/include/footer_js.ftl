@@ -42,3 +42,4 @@
 <script src="/js/cdl-codemap.js"></script>
 <!--自定义通用JS-->
 <script src="/js/common.js"></script>
+<script src="/js/form.js"></script>
