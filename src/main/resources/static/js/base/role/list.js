@@ -164,11 +164,12 @@ function editRole() {
 
 function deleteRole() {
     var ck = $('#dataGrid').bootstrapTable('getSelections');
+    var roleIds = [];
     if(checkedArray(ck)){
-        var roleIds;
-        for(var i=0;i<=ck.length;i++){
-            roleIds += ck[i].id+",";
-        }
+        $.each(ck, function(idx, item) {
+            roleIds[idx] = item.id;
+        });
+        console.log("roleIds:",roleIds);
         bootboxConfirm("确定要删除所选角色吗？", function(result) {
             if (result) {
                 $.ajax({
