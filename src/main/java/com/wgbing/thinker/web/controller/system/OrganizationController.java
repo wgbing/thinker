@@ -76,8 +76,10 @@ public class OrganizationController {
      * @date 2018/7/27 16:01
      */
     @GetMapping("/edit")
-    public String edit(@RequestParam(value = "orgId",required = true) Long orgId){
+    public String edit(@RequestParam(value = "orgId",required = true) Long orgId,
+                       Map<String,Object> map){
         OrganizationVo orgVo = organizationService.findOne(orgId);
+        map.put("org",orgVo);
         return "/base/org/edit";
     }
 

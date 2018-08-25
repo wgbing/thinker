@@ -107,9 +107,49 @@ function reload() {
     location.reload();
     return false;
 }
+
 function toUrl(href) {
     window.location.href = href;
 }
+
+dialogOpen = function(opt){
+    var defaults = {
+        title : '',
+        width: '',
+        height: '',
+        url : null,
+        scroll : false,
+        data : {},
+        btn: ['确定', '取消'],
+        success: function(){},
+        yes: function(){}
+    }
+    var option = $.extend({}, defaults, opt), content = null;
+    if(option.scroll){
+        content = [option.url]
+    }else{
+        content = [option.url, 'no']
+    }
+    parent.layer.open({
+        type : 2,
+        title : option.title,
+        closeBtn : 1,
+        anim: -1,
+        isOutAnim: false,
+        shadeClose : false,
+        shade : 0.3,
+        area : [option.width, option.height],
+        content : content,
+        btn: option.btn,
+        success: function(){
+        },
+        yes: function(index,layero){
+            var addWin = top[layero.find('iframe')[0]['name']];
+            addWin.save();
+        }
+    });
+}
+
 function dialogAlert(content, type) {
     var msgType = {
         success:1,

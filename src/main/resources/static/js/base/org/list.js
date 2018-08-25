@@ -80,14 +80,19 @@ TreeGrid.initColumn = function () {
 };
 
 function edit(orgId){
-    layer.open({
+    parent.layer.open({
         type: 2,
         title: '编辑机构',
         shadeClose: true,
         shade: 0.1,
         maxmin: true, //开启最大化最小化按钮
         area: ['500px', '327px'],
-        content: '/sys/org/edit?orgId='+orgId
+        content: '/sys/org/edit?orgId='+orgId,
+        btn: ['确定', '取消'],
+        yes: function (index,layero) {
+            var addOrgWin = top[layero.find('iframe')[0]['name']];
+            addOrgWin.save();
+        }
     });
 }
 
@@ -162,14 +167,19 @@ function deleteOrg(orgId) {
 
 //新增下级机构
 function addChildOrg(orgId) {
-    layer.open({
+    parent.layer.open({
         type: 2,
         title: '新增下级机构',
         shadeClose: true,
         shade: 0.1,
         maxmin: true, //开启最大化最小化按钮
         area: ['500px', '371px'],
-        content: '/sys/org/add?orgId='+orgId
+        content: '/sys/org/add?orgId='+orgId,
+        btn: ['确定', '取消'],
+        yes: function (index,layero) {
+            var addOrgWin = top[layero.find('iframe')[0]['name']];
+            addOrgWin.save();
+        }
     });
 }
 
@@ -207,13 +217,18 @@ function expandOrCollapseAll() {
 
 //新增根机构
 function addRootOrg() {
-    layer.open({
+    parent.layer.open({
         type: 2,
         title: '新增机构',
-        shadeClose: true,
+        shadeClose: false,//点击弹层外区域关闭
         shade: 0.1,
         maxmin: true, //开启最大化最小化按钮
         area: ['500px', '371px'],
-        content: '/sys/org/add'
+        content: '/sys/org/add',
+        btn: ['确定', '取消'],
+        yes: function (index,layero) {
+            var addOrgWin = top[layero.find('iframe')[0]['name']];
+            addOrgWin.save();
+        }
     });
 }
