@@ -42,7 +42,7 @@
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input id="loginName" name="loginName" type="text" class="form-control" placeholder="请输入登录邮箱/登录名">
+        <input id="loginName" name="loginName" type="text" class="form-control" placeholder="请输入登录邮箱">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
@@ -73,8 +73,7 @@
       <p>- OR -</p>
       <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign up using
         Facebook</a>
-      <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign up using
-        Google+</a>
+      <a href="/face/register" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i>刷脸登录</a>
     </div>
 
     <a href="/login" class="text-center">已有账号？点击登录</a>

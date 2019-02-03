@@ -17,3 +17,15 @@ spring:
 
 admin:
   username: admin
+#==================spring oauth2.0=====================================
+oauth2:
+  #客户端ID
+  client_id: wGP15zzOZ9OMkBrtz085iAzz
+  #公钥(BASE64(xx))
+  secret: Yv41RNHg0eNg84OQUB3IknT3A0ZU4Qis
+  #spring oauth2.0服务url
+  oauth_url: https://aip.baidubce.com/
+  #获取请求code URL
+  request_code_url: oauth/authorize
+  #获取请求token或刷新token URL
+  request_and_refresh_token: oauth/2.0/token
