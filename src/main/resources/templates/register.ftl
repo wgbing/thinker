@@ -71,9 +71,7 @@
 
     <div class="social-auth-links text-center">
       <p>- OR -</p>
-      <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign up using
-        Facebook</a>
-      <a href="/face/register" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i>刷脸登录</a>
+      <a href="/face/register" class="btn btn-block btn-danger">人脸注册</a>
     </div>
 
     <a href="/login" class="text-center">已有账号？点击登录</a>

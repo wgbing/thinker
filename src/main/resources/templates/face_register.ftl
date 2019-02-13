@@ -34,16 +34,32 @@
   </div>
 
   <div class="register-box-body">
-    <p class="login-box-msg">刷脸注册</p>
+    <p class="login-box-msg">人脸注册</p>
 
     <form action="/face/register/save" method="post" onsubmit="return saving()">
         <#if _csrf?? && _csrf.parameterName??>
             <input type="hidden" name="${_csrf.parameterName?default('_csrf')}" value="${_csrf.token?default('')}"/>
         </#if>
         <input type="hidden" id="userPhoto" name="userPhoto">
-        <canvas style="border:1px solid #ffffff;" id="canvas" width="150" height="150" hidden></canvas>
-        <div class="form-group text-center">
-            <video id="video" style="width: 300px;height: 300px;" autoplay></video>
+        <canvas id="canvas" hidden></canvas>
+        <div class="form-group has-feedback text-center">
+            <video id="video" style="width: 320px;height: 180px;" autoplay></video>
+        </div>
+        <div class="form-group has-feedback">
+            <input id="username" name="username" type="text" class="form-control" placeholder="请输入用户名">
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <input id="loginName" name="loginName" type="text" class="form-control" placeholder="请输入登录邮箱">
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <input id="password" name="password" type="password" class="form-control" placeholder="请输入密码">
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+            <input id="repassword" name="repassword" type="password" class="form-control" placeholder="再次确认密码">
+            <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
         </div>
         <div class="row">
             <div class="col-xs-8">
