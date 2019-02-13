@@ -49,6 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().frameOptions().disable();             //解决SpringBoot不允许加载iframe问题
         http.exceptionHandling().accessDeniedPage("/denied");//没有权限访问时跳转路径
         /*.csrf().disable()*/
+        http.csrf().ignoringAntMatchers("/face/register/**");
         http
             .authorizeRequests()
                 .antMatchers("/").permitAll()
