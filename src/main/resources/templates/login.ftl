@@ -98,6 +98,10 @@
             </div>
         </div>
     </div>
+    <div class="social-auth-links text-center">
+      <p>- OR -</p>
+      <a href="/face/login" class="btn btn-block btn-danger">刷脸登录</a>
+    </div>
     <!-- /.social-auth-links -->
   </div>
   <!-- /.login-box-body -->

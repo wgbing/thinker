@@ -29,6 +29,11 @@ public class LoginController {
         return "/login";
     }
 
+    @RequestMapping("/face/login")
+    public String faceLogin() {
+        return "/face_login";
+    }
+
     @GetMapping("/register")
     public String register() {
         return "/register";
