@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="/plugins/adminlte/dist/css/AdminLTE.min.css">
   <!-- iCheck -->
   <link rel="stylesheet" href="/plugins/adminlte/plugins/iCheck/square/blue.css">
+  <!-- bootstrap-validator -->
+  <link rel="stylesheet" href="/plugins/bootstrap-validator/bootstrapValidator.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,7 +38,7 @@
   <div class="register-box-body">
     <p class="login-box-msg">人脸注册</p>
 
-    <form action="/face/register/save" method="post" onsubmit="return saving()">
+    <form action="/face/register/save" method="post" id="face_register_form" onsubmit="return saving()">
         <#if _csrf?? && _csrf.parameterName??>
             <input type="hidden" name="${_csrf.parameterName?default('_csrf')}" value="${_csrf.token?default('')}"/>
         </#if>
@@ -50,7 +52,7 @@
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-            <input id="loginName" name="loginName" type="text" class="form-control" placeholder="请输入登录邮箱">
+            <input id="email" name="email" type="text" class="form-control" placeholder="请输入登录邮箱">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
@@ -65,7 +67,7 @@
             <div class="col-xs-8">
               <div class="checkbox icheck">
                 <label>
-                  <input type="checkbox"> 我同意 <a href="#">《服务协议》</a>
+                  <input type="checkbox" id="agreement" class="icheck" required> 我同意 <a href="#">《服务协议》</a>
                 </label>
               </div>
             </div>
@@ -89,6 +91,9 @@
 <script src="/plugins/adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- iCheck -->
 <script src="/plugins/adminlte/plugins/iCheck/icheck.min.js"></script>
+<!-- bootstrap-validator -->
+<script src="/plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
+
 <script>
     var mediaStreamTrack;
     $(function () {
@@ -96,6 +101,58 @@
           checkboxClass: 'icheckbox_square-blue',
           radioClass: 'iradio_square-blue',
           increaseArea: '20%' /* optional */
+        });
+
+        //表单校验
+        $("#face_register_form").bootstrapValidator({
+            submitHandler: function (valiadtor, loginForm, submitButton) {
+                if(!$("#agreement").is(":checked")){
+                    toastr.warning("请先勾选同意遵循AdminEAP协议","提示信息");
+                    return;
+                }
+                valiadtor.defaultSubmit();
+            },
+            fields:{
+                username:{
+                    validators:{
+                        notEmpty:{
+                            message:'用户名不能为空'
+                        }
+                    }
+                },
+                email: {
+                    validators: {
+                        notEmpty:{
+                            message:'邮箱不能为空'
+                        },
+                        emailAddress: {
+                            message: '请输入正确的邮箱地址'
+                        }
+                    }
+                },
+                password:{
+                    validators:{
+                        notEmpty:{
+                            message:'密码不能为空'
+                        },
+                        identical:{
+                            field: 'repassword',
+                            message: '密码输入不一致'
+                        }
+                    }
+                },
+                repassword:{
+                    validators:{
+                        notEmpty:{
+                            message: '不能为空'
+                        },
+                        identical:{
+                            field: 'password',
+                            message: '密码输入不一致'
+                        }
+                    }
+                }
+            }
         });
 
       openCamera();
