@@ -14,9 +14,9 @@ import java.net.URLEncoder;
 public class ImageClassifyRestService {
 
 
-    public R flowerRecognition(String imgData) {
+    public R plantRecognition(String imgData) {
         // 请求url
-        String url = "https://aip.baidubce.com/rest/2.0/image-classify/v1/flower";
+        String url = "https://aip.baidubce.com/rest/2.0/image-classify/v1/plant";
         try {
             String imgParam = URLEncoder.encode(imgData, "UTF-8");
 

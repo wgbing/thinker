@@ -24,9 +24,12 @@ public class AuthUtil {
      */
     public static String getAuth() {
         // 官网获取的 API Key 更新为你注册的
-        String clientId = "wGP15zzOZ9OMkBrtz085iAzz";
+        String clientId = "oG4urmZWKnsPfjekixc8G1i0";
         // 官网获取的 Secret Key 更新为你注册的
-        String clientSecret = "Yv41RNHg0eNg84OQUB3IknT3A0ZU4Qis";
+        String clientSecret = "yL3wYqsGA8ghWWep4tyujK9mETg6hANS";        // 官网获取的 API Key 更新为你注册的
+//        String clientId = "wGP15zzOZ9OMkBrtz085iAzz";
+//        // 官网获取的 Secret Key 更新为你注册的
+//        String clientSecret = "Yv41RNHg0eNg84OQUB3IknT3A0ZU4Qis";
         return getAuth(clientId, clientSecret);
     }
 

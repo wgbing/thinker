@@ -15,9 +15,9 @@ public class ImageClassifyRestController {
     private ImageClassifyRestService imageClassifyRestService;
 
 
-    @PostMapping("/image/flower")
-    public R flowerRecognition(String imageData, String openId, String nickName){
-        return imageClassifyRestService.flowerRecognition(imageData);
+    @PostMapping("/image/plant")
+    public R plantRecognition(String imgData, String openId, String nickName){
+        return imageClassifyRestService.plantRecognition(imgData);
     }
 
 
