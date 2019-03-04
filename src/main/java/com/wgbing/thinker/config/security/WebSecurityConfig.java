@@ -50,6 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.exceptionHandling().accessDeniedPage("/denied");//没有权限访问时跳转路径
         /*.csrf().disable()*/
         http.csrf().ignoringAntMatchers("/face/register/**");
+        http.csrf().ignoringAntMatchers("/rest/**");
         http
             .authorizeRequests()
                 .antMatchers("/").permitAll()
