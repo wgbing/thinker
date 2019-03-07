@@ -1,4 +1,8 @@
 package com.wgbing.thinker.common;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  * TODO: 页面响应封装
  * @author wgbing
@@ -10,6 +14,7 @@ public class R {
     //处理结果消息（例如错误消息）
     private String message;
     //处理完成后返回数据
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Object data;
 
     public static R success() {

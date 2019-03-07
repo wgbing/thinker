@@ -66,3 +66,7 @@ insert into sys_permission (id, name, description, res_key, res_url, level, type
 
 
 -- Init Role_Permission
+
+-- Init out_app_info 初始化第三方应用信息 例如百度AI应用等
+insert into `out_app_info` ( `api_key`, `app_id`, `config_key`, `create_time`, `deleted`, `name`, `secret_key`, `type`, `update_time`) values ( 'oG4urmZWKnsPfjekixc8G1i0', '15643877', 'TXSB', '2019-03-05 21:47:36', b'0', '图像识别', 'yL3wYqsGA8ghWWep4tyujK9mETg6hANS', '1', '2019-03-05 21:48:02');
+insert into `out_app_info` ( `api_key`, `app_id`, `config_key`, `create_time`, `deleted`, `name`, `secret_key`, `type`, `update_time`) values ( 'wGP15zzOZ9OMkBrtz085iAzz', '15525037', 'RLSB', '2019-03-05 21:47:36', b'0', '人脸识别', 'Yv41RNHg0eNg84OQUB3IknT3A0ZU4Qis', '1', '2019-03-05 21:48:02');

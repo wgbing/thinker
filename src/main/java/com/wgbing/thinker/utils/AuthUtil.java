@@ -15,25 +15,6 @@ import java.util.Map;
 public class AuthUtil {
 
     /**
-     * 获取权限token
-     * @return 返回示例：
-     * {
-     * "access_token": "24.460da4889caad24cccdb1fea17221975.2592000.1491995545.282335-1234567",
-     * "expires_in": 2592000
-     * }
-     */
-    public static String getAuth() {
-        // 官网获取的 API Key 更新为你注册的
-        String clientId = "oG4urmZWKnsPfjekixc8G1i0";
-        // 官网获取的 Secret Key 更新为你注册的
-        String clientSecret = "yL3wYqsGA8ghWWep4tyujK9mETg6hANS";        // 官网获取的 API Key 更新为你注册的
-//        String clientId = "wGP15zzOZ9OMkBrtz085iAzz";
-//        // 官网获取的 Secret Key 更新为你注册的
-//        String clientSecret = "Yv41RNHg0eNg84OQUB3IknT3A0ZU4Qis";
-        return getAuth(clientId, clientSecret);
-    }
-
-    /**
      * 获取API访问token
      * 该token有一定的有效期，需要自行管理，当失效时需重新获取.
      * @param ak - 百度云官网获取的 API Key
